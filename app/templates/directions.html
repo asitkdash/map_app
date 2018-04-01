@@ -30,7 +30,7 @@
 {% endblock %}
 
 {% block time %}
-    document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+    document.getElementById('info').innerHTML=h+":"+m+":"+s;
     var travelTime = parseInt("{{tl}}");
     var timeLeft = 30 - m;
     var arrival = timeLeft - travelTime

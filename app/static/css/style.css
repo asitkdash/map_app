@@ -2,43 +2,40 @@
          * element that contains the map. */
 
         html,
-        body {
+        body.pushable>.pusher {
             height: 100%;
             margin: 0;
             padding: 0;
         }
+        
+        .container{
+            display:-webkit-box;
+            display:-ms-flexbox;
+            display:flex;
+            padding:8px;
+
+            height:100%;
+            -webkit-box-sizing:border-box;
+            box-sizing:border-box;
+        }
+
+        .ui.sidebar {
+            overflow: visible !important;
+        }
+
         #map {
             position: absolute;
-            height: 570px;
-            width: 810px;
-            top: 200px;
-            left: 320px;
+            height: 100%;
+            width: 100%;
+            top: 0px;
+            z-index: -1;
         }
 	
         #navbar {
             position: relative;
-            top: 10px;
+            margin-right: 50px;
         }
 		
-
-        #floating-panel {
-            position: absolute;
-            height: 50px;
-            top: 140px;
-            left: 20%;
-            z-index: 5;
-            background: #FFF;
-            text-align: center;
-            line-height: 30px;
-            padding-left: 10px;
-            padding: 5px;
-            font-size: 14px;
-            font-family: Arial;
-            border: 1px solid #ccc;
-            box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
-            display: block;
-        }
-
         #right-panel {
             position: absolute;
             padding-left: 10px;
@@ -51,7 +48,7 @@
             background-color: white;
         }
 
-        #txt {
+        #info {
             position: absolute;
             size: 40px;
             font-size: 30px;
@@ -59,8 +56,8 @@
             background: #fff;
             border: 1px solid #ccc;
             box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
-            top: 125px;
-            right: 26%;
+            top: 0px;
+            right: 0px;
         }
 
         #warning {
@@ -91,14 +88,8 @@
             position: relative;
             top: 16px;
         }
-        
-        @media print {
-            #map {
-                height: 100%;
-                margin: 0;
-            }
-            #right-panel {
-                float: none;
-                width: auto;
-            }
+
+        #left-sidebar-toggle{
+            padding: 14px;
         }
+        

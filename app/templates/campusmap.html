@@ -14,7 +14,7 @@
 {% extends "base.html" %}
 
 {% block map %}
-    <div id="txt" class="ui label"></div>
+    <div id="info" class="ui label"></div>
     <div id="warning"></div>
     <!-- <div id="right-panel">
         {% block display %}{% endblock %}
@@ -23,192 +23,247 @@
     </div>
 
 	<script>
-			var latlong;
-			var map;
-			var GeoMarker;
-			var directionsDisplay;
-			var directionsService;
+    var latlong;
+    var map;
+    var GeoMarker;
+    var directionsDisplay;
+    var directionsService;
 
-			function userLoc() {
-				if (navigator.geolocation) {	// Call geolocation to get user's current position
-			     	navigator.geolocation.getCurrentPosition(getCurrPos, errorCallback, {enableHighAccuracy:true});
-			    }
+    initMap();
+	$('.ui.sidebar').sidebar({
+		dimPage: false,
+		transition: 'push',
+		exclusive: false,
+		closable: false
+	});
 
-				function getCurrPos(position) {
-			        document.getElementById('location').value = position.coords.latitude + "," + position.coords.longitude;
-			        //alert(document.getElementById('location').value);
-			   	}
+	$('.ui.sidebar').sidebar('attach events', '#left-sidebar-toggle');
 
-			   	function errorCallback() {}
-		   	}
-			var bldButtons = document.getElementsByClassName('ui button');
-       		for(var i = 0; i < bldButtons.length; i++) {
-            		var button = bldButtons[i];
+    if (navigator.geolocation) { // Call geolocation to get user's current position
+        navigator.geolocation.getCurrentPosition(getCurrPos, errorCallback, {
+            enableHighAccuracy: true
+        });
+    }
 
-		    if (bldButtons[i].className == 'ui button') {
-		      button.addEventListener('click', function () {
-			//alert(this.value);
-			var latlng = this.value.split(',');
-			var lat = parseFloat(latlng[0]);
-			var lng = parseFloat(latlng[1]);
+    function getCurrPos(position) {
+        document.getElementById('location').value = position.coords.latitude + "," + position.coords.longitude;
+        //alert(document.getElementById('location').value);
+    }
 
-			var marker = new google.maps.Marker({map:map});
-			marker.setPosition(new google.maps.LatLng(lat, lng));
+    function errorCallback() {}
 
-		      })
-		    }
-		    else {
-			button.addEventListener('click', function () {
-			document.getElementById('src1').value = this.id;
-			});
-		    }
+    var bldButtons = document.getElementsByClassName('ui button');
+
+    for (var i = 0; i < bldButtons.length; i++) {
+        var button = bldButtons[i];
+
+        if (bldButtons[i].className == 'ui button') {
+            button.addEventListener('click', function() {
+                //alert(this.value);
+                var latlng = this.value.split(',');
+                var lat = parseFloat(latlng[0]);
+                var lng = parseFloat(latlng[1]);
+                var contentString = '<div id="{{TOPIC_DICT[0]}}">'+
+                    '<div id="{{TOPIC_DICT[1]}}">'+
+                    '</div>'+
+                    '<h1 id="{{TOPIC_DICT[2]}}" class="{{TOPIC_DICT[3]}}">Computer Science</h1>'+
+                    '<img src="{{ url_for('static', filename='img/asktuffy2.png') }}">'+
+                    '<div id="{{TOPIC_DICT[4]}}">'+
+                    '<p><b>Computer Science</b>, {{TOPIC_DICT[5]}}</p>'+
+                    '<p>{{TOPIC_DICT[6]}} Uluru, '+
+                    '<a href="{{TOPIC_DICT[7]}}">{{TOPIC_DICT[8]}}</a>'+
+                    '</p>'+
+                    '</div>'+
+                    '</div>';
+
+                    var infowindow = new google.maps.InfoWindow({
+                      content: contentString
+                    });
+
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        animation: google.maps.Animation.DROP,
+                        title: 'CSUF'
+                    });
+                    marker.addListener('click', function() {
+                      infowindow.open(map, marker);
+                    });
+
+                marker.setPosition(new google.maps.LatLng(lat, lng));
+
+            })
+        } else if (bldButtons[i].className == 'ui positive button') {
+            button.addEventListener('click', function() {
+                document.getElementById('src1').value = this.id;
+            });
         }
+    }
+
+    function startTime() { // Displays real time clock
+        var today = new Date();
+        var h = today.getHours();
+        if (h > 12) {
+            h = h - 12;
+        } else if (h == 0) {
+            h = 12;
+        }
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        h = checkTime(h);
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('info').innerHTML = h + ":" + m + ":" + s;
+        setTimeout(startTime, 500); {% block time %} {% endblock %}
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+
+    function initMap() { // displays map on page, sets up variables for the directions service for use later
+        startTime();
+        var csufLocation = {
+            lat: 33.881994,
+            lng: -117.885076
+        };
+        directionsDisplay = new google.maps.DirectionsRenderer;
+        directionsService = new google.maps.DirectionsService;
+        var mapOptions = {
+            zoom: 16,
+            center: csufLocation,
+            streetViewControl: false,
+            mapTypeControl: false,
+            styles: [{
+                    "featureType": "landscape",
+                    "stylers": [{
+                            "hue": "#FFA800"
+                        },
+                        {
+                            "saturation": 0
+                        },
+                        {
+                            "lightness": 0
+                        },
+                        {
+                            "gamma": 1
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "stylers": [{
+                            "hue": "#53FF00"
+                        },
+                        {
+                            "saturation": 100
+                        },
+                        {
+                            "lightness": 40
+                        },
+                        {
+                            "gamma": 1
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "stylers": [{
+                            "hue": "#FBFF00"
+                        },
+                        {
+                            "saturation": 0
+                        },
+                        {
+                            "lightness": 0
+                        },
+                        {
+                            "gamma": 1
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.local",
+                    "elementType": "geometry",
+                    "stylers": [{
+                            "hue": "#FFFFFF"
+                        },
+                        {
+                            "saturation": 100
+                        },
+                        {
+                            "lightness": 100
+                        },
+                        {
+                            "gamma": 1
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "stylers": [{
+                            "hue": "#00BFFF"
+                        },
+                        {
+                            "saturation": 6
+                        },
+                        {
+                            "lightness": 8
+                        },
+                        {
+                            "gamma": 1
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "stylers": [{
+                            "hue": "#679714"
+                        },
+                        {
+                            "saturation": 33.4
+                        },
+                        {
+                            "lightness": -25.4
+                        },
+                        {
+                            "gamma": 1
+                        }
+                    ]
+                }
+            ]
+        };
+        map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
 
-	        function startTime() {	// Displays real time clock
-	            var today = new Date();
-	            var h = today.getHours();
-	            if (h > 12) {
-	                h = h - 12;
-	            }
-	            else if (h == 0) {
-	            	h = 12;
-	            }
-	            var m = today.getMinutes();
-	            var s = today.getSeconds();
-	            h = checkTime(h);
-	            m = checkTime(m);
-	            s = checkTime(s);
-	            document.getElementById('txt').innerHTML=h+":"+m+":"+s;
-	            setTimeout(startTime, 500);
-	            {% block time %} {% endblock %}
-	        }
-	        function checkTime(i) {
-	            if (i < 10) {
-	                i = "0" + i;
-	            }
-	            return i;
-	        }
-	        startTime();
-	        initMap();
+        var quadCoords = [
+          {lat: 33.880798, lng: -117.885695},
+          {lat: 33.880807, lng: -117.885034},
+          {lat: 33.880044, lng: -117.885023},
+          {lat: 33.880030, lng: -117.885674},
+          {lat: 33.880798, lng: -117.885695}
+        ];
 
-		    function initMap() {	// displays map on page, sets up variables for the directions service for use later
-            var csufLocation = {
-              lat: 33.881994,
-              lng: -117.885076
-            };
-            directionsDisplay = new google.maps.DirectionsRenderer;
-		        directionsService = new google.maps.DirectionsService;
-		        var mapOptions = {
-		            zoom: 16,
-		            center: csufLocation,
-		            streetViewControl: false,
-		            mapTypeControl: false,
-		            styles: [{
-		                    "featureType": "landscape",
-		                    "stylers": [{
-		                            "hue": "#FFA800"
-		                        },
-		                        {
-		                            "saturation": 0
-		                        },
-		                        {
-		                            "lightness": 0
-		                        },
-		                        {
-		                            "gamma": 1
-		                        }
-		                    ]
-		                },
-		                {
-		                    "featureType": "road.highway",
-		                    "stylers": [{
-		                            "hue": "#53FF00"
-		                        },
-		                        {
-		                            "saturation": 100
-		                        },
-		                        {
-		                            "lightness": 40
-		                        },
-		                        {
-		                            "gamma": 1
-		                        }
-		                    ]
-		                },
-		                {
-		                    "featureType": "road.arterial",
-		                    "stylers": [{
-		                            "hue": "#FBFF00"
-		                        },
-		                        {
-		                            "saturation": 0
-		                        },
-		                        {
-		                            "lightness": 0
-		                        },
-		                        {
-		                            "gamma": 1
-		                        }
-		                    ]
-		                },
-		                {
-		                    "featureType": "road.local",
-		                    "elementType": "geometry",
-		                    "stylers": [{
-		                            "hue": "#FFFFFF"
-		                        },
-		                        {
-		                            "saturation": 100
-		                        },
-		                        {
-		                            "lightness": 100
-		                        },
-		                        {
-		                            "gamma": 1
-		                        }
-		                    ]
-		                },
-		                {
-		                    "featureType": "water",
-		                    "stylers": [{
-		                            "hue": "#00BFFF"
-		                        },
-		                        {
-		                            "saturation": 6
-		                        },
-		                        {
-		                            "lightness": 8
-		                        },
-		                        {
-		                            "gamma": 1
-		                        }
-		                    ]
-		                },
-		                {
-		                    "featureType": "poi",
-		                    "stylers": [{
-		                            "hue": "#679714"
-		                        },
-		                        {
-		                            "saturation": 33.4
-		                        },
-		                        {
-		                            "lightness": -25.4
-		                        },
-		                        {
-		                            "gamma": 1
-		                        }
-		                    ]
-		                }
-		            ]
-		        };
-		        map = new google.maps.Map(document.getElementById('map'), mapOptions);
-		        directionsDisplay.setMap(map);
+        // Construct the polygon.
+        // var quadPolygon = new google.maps.Polygon({
+        //   paths: quadCoords,
+        //   strokeColor: '#000000',
+        //   strokeOpacity: 0,
+        //   strokeWeight: 2,
+        //   fillColor: '#000000',
+        //   fillOpacity: 1
+        // });
+        //
+        // quadPolygon.setMap(map);
 
-		        userLoc();
-		        {% block maproute %} {% endblock %}
-		    }
-		    document.getElementById('src1').value="";
-	</script>
+
+        directionsDisplay.setMap(map);
+
+        {% block maproute %} {% endblock %}
+    }
+    document.getElementById('src1').value = "";
+</script>
+
 {% endblock %}

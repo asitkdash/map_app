@@ -6,16 +6,17 @@
     <title>Displaying text directions with <code>setPanel()</code></title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css"/>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/semantic.min.js"/></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.js"/></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{ key }}"></script>
     <script  src="{{ url_for('static', filename='scripts/geolocation-marker.js') }}"></script>
-
+    <script  src="{{ url_for('static', filename='scripts/maplabel.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <style>
-        body {
+        body.pushable>.pusher {
             background: url(static/img/university5.jpg);
             background-size: cover;
             background-size: 100%;
@@ -25,11 +26,9 @@
 
 <body>
 
-<form id="geolocation" action="" method="POST">
-<input type="hidden" id="location" name="location" value="">
-
-<div id="navbar">
-  <div class="ui vertical menu">
+  <div class="ui left vertical menu sidebar">
+    <form id="geolocation" action="" method="POST">
+    <input type="hidden" id="location" name="location" value="">
     <h2 class="ui center aligned header" id="header1">
       <img src="{{ url_for('static', filename='img/asktuffy2.png') }}" class="ui circular image">
       <a href=/map>CSUF</a>
@@ -47,23 +46,20 @@
 
         <div class="item" id="login">
             <div class="ui blue submit button"><i class="white signup icon"></i>Login</div>
-         <!-- <div class="ui button"></i>Log-in</div> -->
+
         </div>
     </div>
-
-
 
     <div class="active item">
         <div class="ui transparent icon input">
             <input type="text" id="src1" name="src1" placeholder="Enter Class e.g cs101">
-            <button class="ui compact icon button" type="Submit" id="submit">
+            <button class="ui compact icon button" type="Submit" id="submit" style="position: relative; right: 8px">
               <i class="search icon"></i>
             </button>
         </div>
     </div>
 
     <div class="ui fitted divider"></div>
-
     <div class="ui simple dropdown item">
         <i class="teal book icon"></i> Education Buildings
         <div class="menu" style="overflow:auto;max-height:289px;">
@@ -608,16 +604,68 @@
         </div>
     </div>
 
-    <div class="ui fitted divider"></div>
+    <div id="ex1" class="modal">
+           <p><strong>Education Buildings</strong><br>
+             CC - Children's Center|| CS - Computer Science|| CPAC - Clayes Performing Arts Center||
+             DBH - Dan Black Hall|| EC - Education Classroom|| E - Engineering|| G - Golleher Alumni House
+             || H - Humanities & Social Science || KHS - Kinesiology & Health Science|| LH - Langsdorf Hall
+             || MH - McCarthy Hall|| PL - Pollak library|| PLS - Pollak Library South|| RGC - Ruby Gerontology Center
+             || SGMH - Steven G. Mihalyo|| UH - University Hall|| VA - Visual Arts</p>
+          <p><strong>Food & Dining</strong><br>
+             BE - Baja Fresh|| CJ - Carl's Jr|| GA - Gastronome|| JU - Juice It Up|| PEX - Panda Express||
+             MST - Mihaylo Starbucks|| PLST - Pollak Library Starbucks|| TSUST - TSU Starbucks||
+             CPT - College Park Togos|| TSUT - TSU Togos</p>
+             <p><strong>ATM & Bank</strong><br>
+              BOFA - BOFA Bank ATM|| CATM - Chase ATM|| WATM - Wells Fargo ATM|| USB - US Bank Branch</p>
+              <p><strong>Landmarks</strong><br>
+              BA - Becker Amphitheater|| ECSQ - ECS Quad|| Q - Quad|| TW - Titan Walk</p>
+              <p><strong>Facilities</strong><br>
+              EHS - Environment Health & Safety|| TRI - Trigen|| P - Parking and Transportation Office</p>
+              <p><strong>Parking Structures</strong><br>
+              PA - Parking Lot A|| PAS - Parking Lot A-South|| PC - Parking Lot C|| PCE - Parking Lot C-East
+              || PCW - Parking Lot C-West|| PE - Parking Lot E|| PF - Parking Lot F|| PG - Parking Lot G||
+              PH - Parking Lot H|| PI - Parking Lot I|| PS - Parking Lot S|| AP - Arboritum Parking||
+              CPFSP - CPFS Parking|| DDP - Dumbo Down Parking|| EPS - Eastside Parking Structure||
+              NPS - Nutwood Parking Structure|| SCPS - Stage College Parking</p>
+              <p><strong>Corporation Yard</strong><br>
+              AS - Automobile Shop|| CSH - Carpenter Shop|| MC - Mailing Center|| SR - Shipping & Recieving</p>
+              <p><strong>Administrative Building</strong><br>
+              CP - College Park|| CPW - College Park West</p>
+              <p><strong>Student Services</strong><br>
+              ARSC - Admission and Records Service Center|| CRC - Career Center|| RH - Resident Hall||
+              SH - Student Housing|| SRC - Student Recreation Center</p>
+              <p><strong>Titan Pride</strong><br>
+              TG - Titan Gymnasium|| TH - Titan House|| TROTC - Titan ROTC|| TSH - Titan Shop
+              || TSU - Titan Student Union</p>
+              <p><strong>Titan Sports Complex</strong><br>
+              TST - Titan Stadium|| GF - Goodwin Field|| AF - Anderson Field</p>
+              <p><strong>Emergency</strong><br>
+              SHCC - Student Health & Counseling Center|| UP - University Police
+           </p>
+         </div>
+        <a href="#ex1" rel="modal:open" class="item" id="offline-map">
+        <i class="teal map icon"></i>Offline Map/Legend</a>
+        <a href="#" class="item" id="team"><i class="teal phone icon"></i>Meet The Team</a>
 
-    <a href="#" class="item" id="offline-map"><i class="teal map icon"></i>Offline Map/Legend</a>
-    <a href="#" class="item" id="team"><i class="teal phone icon"></i>Meet The Team</a>
-
+    </form>
   </div>
 
 
-</div>
+    <div class="pusher">
+    <button class="ui icon button" id="left-sidebar-toggle">
+      <i class="align justify icon"></i>
+    </button>
+    {% block map %} {% endblock %}
+    </div>
 
-</form>
-{% block map %} {% endblock %}
+    <script>
+            $('.ui.sidebar').sidebar({
+        dimPage: false,
+        transition: 'push',
+        exclusive: false,
+        closable: false
+    });
+
+    $('.ui.sidebar').sidebar('attach events', '#left-sidebar-toggle');
+    </script>
 </body>
