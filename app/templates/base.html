@@ -6,7 +6,6 @@
     <title>Displaying text directions with <code>setPanel()</code></title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css"/>
-<<<<<<< HEAD
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -14,20 +13,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{ key }}"></script>
     <script  src="{{ url_for('static', filename='scripts/geolocation-marker.js') }}"></script>
-    <script  src="{{ url_for('static', filename='scripts/maplabel.js') }}"></script>
+    <script  src="{{ url_for('static', filename='scripts/content.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <style>
         body.pushable>.pusher {
-=======
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/semantic.min.js"/></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ key }}"></script>
-    <script  src="{{ url_for('static', filename='scripts/geolocation-marker.js') }}"></script>
-
-    <style> 
-        body {
->>>>>>> 45ad54027c51c6ffb87c4165eeacd051707050fb
             background: url(static/img/university5.jpg);
             background-size: cover;
             background-size: 100%;
@@ -36,17 +25,18 @@
 </head>
 
 <body>
+    <!-- Modal HTML embedded directly into document -->
+  <form action="" class="login_form modal" id="ex2" style="display:none;">
+    <h3>Please login to continue</h3>
+    <p><label>Username:</label><input type="text" /></p>
+    <p><label>Password:</label><input type="password" /></p>
+    <p><input type="submit" value="Login" /></p>
+  </form>
 
-<<<<<<< HEAD
+
   <div class="ui left vertical menu sidebar">
     <form id="geolocation" action="" method="POST">
     <input type="hidden" id="location" name="location" value="">
-=======
-<form id="geolocation" action="" method="POST">
-<input type="hidden" id="location" name="location" value="">
-<div id="navbar">
-  <div class="ui vertical menu">
->>>>>>> 45ad54027c51c6ffb87c4165eeacd051707050fb
     <h2 class="ui center aligned header" id="header1">
       <img src="{{ url_for('static', filename='img/asktuffy2.png') }}" class="ui circular image">
       <a href=/map>CSUF</a>
@@ -61,11 +51,11 @@
         <div class="item" id="signup">
             <div class="ui blue submit button">Sign up</div>
         </div>
-
-        <div class="item" id="login">
+        <a href="#ex2" rel="modal:open" class="item" id="login">
+        <div class="ui blue submit button"><i class="white signup icon"></i>Login</div></a>
+        <!-- <div class="item" id="login">
             <div class="ui blue submit button"><i class="white signup icon"></i>Login</div>
-
-        </div>
+        </div> -->
     </div>
 
     <div class="active item">
@@ -668,7 +658,6 @@
     </form>
   </div>
 
-<<<<<<< HEAD
 
     <div class="pusher">
     <button class="ui icon button" id="left-sidebar-toggle">
@@ -684,9 +673,6 @@
         exclusive: false,
         closable: false
     });
-=======
-</div>
->>>>>>> 45ad54027c51c6ffb87c4165eeacd051707050fb
 
     $('.ui.sidebar').sidebar('attach events', '#left-sidebar-toggle');
     </script>
