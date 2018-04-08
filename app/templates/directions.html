@@ -14,7 +14,7 @@
       GeoMarker = new GeolocationMarker();
       GeoMarker.setCircleOptions({visible: false});
       GeoMarker.setMap(map);
-      
+
       directionsService.route({
         origin: "{{ cur }}",
         destination: "{{ coords }}",
@@ -26,10 +26,10 @@
           window.alert('Directions request failed due to ' + status);
         }
       });
-      
+
 {% endblock %}
 
-{% block time %}
+<!-- {% block time %}
     document.getElementById('info').innerHTML=h+":"+m+":"+s;
     var travelTime = parseInt("{{tl}}");
     var timeLeft = 30 - m;
@@ -45,4 +45,4 @@
         document.getElementById('warning').innerHTML="You'll be there: " + arrival + " mins early";
       }
     }
-{% endblock %}
+{% endblock %} -->

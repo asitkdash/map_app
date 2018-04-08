@@ -14,11 +14,6 @@
 {% extends "base.html" %}
 
 {% block map %}
-    <div id="info" class="ui label"></div>
-    <div id="warning"></div>
-    <!-- <div id="right-panel">
-        {% block display %}{% endblock %}
-    </div> -->
     <div id="map"></div>
     </div>
 
@@ -63,17 +58,252 @@
                 var lat = parseFloat(latlng[0]);
                 var lng = parseFloat(latlng[1]);
                 var bldid = this.id;
+                //for getting abv
                 bldid = bldid.split("-");
+
+                function pickImage(bld){
+                  if (bld == "CS"){
+                    var image = '<img src="{{url_for('static', filename='img/TSU.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "SGMH") {
+                    var image = '<img src="{{url_for('static', filename='img/SGMH.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "PL") {
+                    var image = '<img src="{{url_for('static', filename='img/PL.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "MH") {
+                    var image = '<img src="{{url_for('static', filename='img/MH.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "E") {
+                    var image = '<img src="{{url_for('static', filename='img/E.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "H") {
+                    var image = '<img src="{{url_for('static', filename='img/H.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "KHS") {
+                    var image = '<img src="{{url_for('static', filename='img/KHS.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "CSH") {
+                    var image = '<img src="{{url_for('static', filename='img/CSH.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "SR") {
+                    var image = '<img src="{{url_for('static', filename='img/SR.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "AS") {
+                    var image = '<img src="{{url_for('static', filename='img/AS.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "MC") {
+                    var image = '<img src="{{url_for('static', filename='img/MC.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "CC") {
+                    var image = '<img src="{{url_for('static', filename='img/CC.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "CPAC") {
+                    var image = '<img src="{{url_for('static', filename='img/CPAC.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "DBH") {
+                    var image = '<img src="{{url_for('static', filename='img/DBH.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "EC") {
+                    var image = '<img src="{{url_for('static', filename='img/EC.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "G") {
+                    var image = '<img src="{{url_for('static', filename='img/G.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "LH") {
+                    var image = '<img src="{{url_for('static', filename='img/LH.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "PLS") {
+                    var image = '<img src="{{url_for('static', filename='img/PLS.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "RGC") {
+                    var image = '<img src="{{url_for('static', filename='img/RGC.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "TG") {
+                    var image = '<img src="{{url_for('static', filename='img/TG.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "UH") {
+                    var image = '<img src="{{url_for('static', filename='img/UH.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "VA") {
+                    var image = '<img src="{{url_for('static', filename='img/VA.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "BE") {
+                    var image = '<img src="{{url_for('static', filename='img/BE.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "CJ") {
+                    var image = '<img src="{{url_for('static', filename='img/CJ.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "GA") {
+                    var image = '<img src="{{url_for('static', filename='img/GA.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "JU") {
+                    var image = '<img src="{{url_for('static', filename='img/JU.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "PEX") {
+                    var image = '<img src="{{url_for('static', filename='img/PEX.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "MST") {
+                    var image = '<img src="{{url_for('static', filename='img/MST.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "PLST") {
+                    var image = '<img src="{{url_for('static', filename='img/PLST.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "TSUST") {
+                    var image = '<img src="{{url_for('static', filename='img/TSUST.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "CPT") {
+                    var image = '<img src="{{url_for('static', filename='img/CPT.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "TSUT") {
+                    var image = '<img src="{{url_for('static', filename='img/TSUT.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "BOFA") {
+                    var image = '<img src="{{url_for('static', filename='img/BOFA.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "CATM") {
+                    var image = '<img src="{{url_for('static', filename='img/CATM.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "WATM") {
+                    var image = '<img src="{{url_for('static', filename='img/WATM.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "USB") {
+                    var image = '<img src="{{url_for('static', filename='img/USB.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "BA") {
+                    var image = '<img src="{{url_for('static', filename='img/BA.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "ECSQ") {
+                    var image = '<img src="{{url_for('static', filename='img/ECSQ.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "Q") {
+                    var image = '<img src="{{url_for('static', filename='img/Q.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "TW") {
+                    var image = '<img src="{{url_for('static', filename='img/TW.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "EHS") {
+                    var image = '<img src="{{url_for('static', filename='img/EHS.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "TRI") {
+                    var image = '<img src="{{url_for('static', filename='img/TRI.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "P") {
+                    var image = '<img src="{{url_for('static', filename='img/P.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "CP") {
+                    var image = '<img src="{{url_for('static', filename='img/CP.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "CPW") {
+                    var image = '<img src="{{url_for('static', filename='img/CPW.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "SHCC") {
+                    var image = '<img src="{{url_for('static', filename='img/SHCC.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "UP") {
+                    var image = '<img src="{{url_for('static', filename='img/UP.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "ARSC") {
+                    var image = '<img src="{{url_for('static', filename='img/ARSC.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "CRC") {
+                    var image = '<img src="{{url_for('static', filename='img/CRC.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "SRC") {
+                    var image = '<img src="{{url_for('static', filename='img/SRC.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "RH") {
+                    var image = '<img src="{{url_for('static', filename='img/RH.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "SH") {
+                    var image = '<img src="{{url_for('static', filename='img/SH.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "TH") {
+                    var image = '<img src="{{url_for('static', filename='img/TH.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "TROTC") {
+                    var image = '<img src="{{url_for('static', filename='img/TROTC.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "TSH") {
+                    var image = '<img src="{{url_for('static', filename='img/TSH.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "TSU") {
+                    var image = '<img src="{{url_for('static', filename='img/TSU.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "TS") {
+                    var image = '<img src="{{url_for('static', filename='img/TS.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "GF") {
+                    var image = '<img src="{{url_for('static', filename='img/GF.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "AF") {
+                    var image = '<img src="{{url_for('static', filename='img/AF.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "PAS") {
+                    var image = '<img src="{{url_for('static', filename='img/PAS.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "PA") {
+                    var image = '<img src="{{url_for('static', filename='img/PA.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "PC") {
+                    var image = '<img src="{{url_for('static', filename='img/PC.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "PCE") {
+                    var image = '<img src="{{url_for('static', filename='img/PCE.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "PCW") {
+                    var image = '<img src="{{url_for('static', filename='img/PCW.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "PE") {
+                    var image = '<img src="{{url_for('static', filename='img/PE.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "PF") {
+                    var image = '<img src="{{url_for('static', filename='img/PF.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "PG") {
+                    var image = '<img src="{{url_for('static', filename='img/PG.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "PH") {
+                    var image = '<img src="{{url_for('static', filename='img/PH.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "PI") {
+                    var image = '<img src="{{url_for('static', filename='img/PI.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "PS") {
+                    var image = '<img src="{{url_for('static', filename='img/PS.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "AP") {
+                    var image = '<img src="{{url_for('static', filename='img/AP.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "CPFSP") {
+                    var image = '<img src="{{url_for('static', filename='img/CPFSP.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "DDP") {
+                    var image = '<img src="{{url_for('static', filename='img/DDP.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "EPS") {
+                    var image = '<img src="{{url_for('static', filename='img/EPS.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "NPS") {
+                    var image = '<img src="{{url_for('static', filename='img/NPS.jpg')}}" height="500" width="500">';
+                  }
+                  else if (bld == "SCPS") {
+                    var image = '<img src="{{url_for('static', filename='img/SCPS.jpg')}}" height="500" width="500">';
+                  }
+                  return image;
+                }
+
                 var array = maindict[bldid[0]];
+                var image = pickImage(bldid[0]);
 
                 var contentString = '<div id="content">'+
                                     '<div id="siteNotice">'+
                                     '</div>'+
-                                    '<h1 id="firstHeading" class="firstHeading">'+ array[0] +' Building</h1>'+
-                                    '<div id="bodyContent">'+
-                                    '<img src="{{url_for('static', filename='img/asktuffy2.png')}}">'+
+                                    '<h1 id="firstHeading" class="firstHeading">'+ array[0] +'</h1>'+
+                                    '<div id="bodyContent">'+ image +
+//                                    '<img src="{{url_for('static', filename='img/asktuffy2.png')}}">'+
                                     '<p><b>'+ array[0] + '</b> :'+ array[1] + '</p>'+
-                                    '<p><a href="' + array[2] + '">Link to '+ array[0] +' Building</a> '+
+                                    '<p><a href="' + array[2] + '">Link to '+ array[0] +'</a> '+
                                     '</div>'+
                                     '</div>';
 
@@ -137,129 +367,216 @@
             center: csufLocation,
             streetViewControl: false,
             mapTypeControl: false,
-            styles: [{
-                    "featureType": "landscape",
-                    "stylers": [{
-                            "hue": "#FFA800"
-                        },
-                        {
-                            "saturation": 0
-                        },
-                        {
-                            "lightness": 0
-                        },
-                        {
-                            "gamma": 1
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "stylers": [{
-                            "hue": "#53FF00"
-                        },
-                        {
-                            "saturation": 100
-                        },
-                        {
-                            "lightness": 40
-                        },
-                        {
-                            "gamma": 1
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.arterial",
-                    "stylers": [{
-                            "hue": "#FBFF00"
-                        },
-                        {
-                            "saturation": 0
-                        },
-                        {
-                            "lightness": 0
-                        },
-                        {
-                            "gamma": 1
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.local",
-                    "elementType": "geometry",
-                    "stylers": [{
-                            "hue": "#FFFFFF"
-                        },
-                        {
-                            "saturation": 100
-                        },
-                        {
-                            "lightness": 100
-                        },
-                        {
-                            "gamma": 1
-                        }
-                    ]
-                },
-                {
-                    "featureType": "water",
-                    "stylers": [{
-                            "hue": "#00BFFF"
-                        },
-                        {
-                            "saturation": 6
-                        },
-                        {
-                            "lightness": 8
-                        },
-                        {
-                            "gamma": 1
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi",
-                    "stylers": [{
-                            "hue": "#679714"
-                        },
-                        {
-                            "saturation": 33.4
-                        },
-                        {
-                            "lightness": -25.4
-                        },
-                        {
-                            "gamma": 1
-                        }
-                    ]
-                }
-            ]
-        };
+            styles: mapstyles
+            };
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-
-        var quadCoords = [
-          {lat: 33.880798, lng: -117.885695},
-          {lat: 33.880807, lng: -117.885034},
-          {lat: 33.880044, lng: -117.885023},
-          {lat: 33.880030, lng: -117.885674},
-          {lat: 33.880798, lng: -117.885695}
+        var PLSCoords = [
+          {lat: 33.881334, lng: -117.885711},
+          {lat: 33.881341, lng: -117.885341},
+          {lat:33.881346, lng:-117.885014},
+          {lat:33.881122, lng:-117.885006},
+          {lat:33.880898, lng:-117.885006},
+          {lat:33.880896, lng:-117.885273},
+          {lat:33.880890, lng:-117.885724},
+          {lat:33.881102, lng:-117.885701},
+          {lat:33.881340, lng:-117.885703},
+          {lat: 33.881334, lng: -117.885711}
         ];
+        var PollakLibraryCoords = [
+          {lat: 33.882109, lng: -117.885717},
+          {lat: 33.882110, lng: -117.885700},
+          {lat: 33.882139, lng: -117.885636},
+          {lat: 33.882158, lng: -117.885563},
+          {lat: 33.882165, lng: -117.885490},
+          {lat: 33.882160, lng: -117.885418},
+          {lat: 33.882142, lng: -117.885343},
+          {lat: 33.882116, lng: -117.885282},
+          {lat: 33.882117, lng: -117.885092},
+          {lat: 33.882082, lng: -117.885091},
+          {lat: 33.882067, lng: -117.885068},
+          {lat: 33.882051, lng: -117.885090},
+          {lat: 33.881998, lng: -117.885088},
+          {lat: 33.881999, lng: -117.885062},
+          {lat: 33.882034, lng: -117.885039},
+          {lat: 33.882033, lng: -117.885027},
+          {lat: 33.881995, lng: -117.884999},
+          {lat: 33.881952, lng: -117.884998},
+          {lat: 33.881915, lng: -117.885024},
+          {lat: 33.881939, lng: -117.885052},
+          {lat: 33.881950, lng: -117.885058},
+          {lat: 33.881950, lng: -117.885088},
+          {lat: 33.881581, lng: -117.885072},
+          {lat: 33.881575, lng: -117.885006},
+          {lat: 33.881509, lng: -117.885005},
+          {lat: 33.881506, lng: -117.885134},
+          {lat: 33.881460, lng: -117.885077},
+          {lat: 33.881452, lng: -117.885077},
+          {lat: 33.881445, lng: -117.885701},
+          {lat: 33.881472, lng: -117.885677},
+          {lat: 33.881490, lng: -117.885654},
+          {lat: 33.881503, lng: -117.885633},
+          {lat: 33.881498, lng: -117.885751},
+          {lat: 33.881501, lng: -117.885751},
+          {lat: 33.881501, lng: -117.885782},
+          {lat: 33.881569, lng: -117.885790},
+          {lat: 33.881571, lng: -117.885718},
+          {lat: 33.881602, lng: -117.885718},
+          {lat: 33.881617, lng: -117.885738},
+          {lat: 33.881633, lng: -117.885718},
+          {lat: 33.882043, lng: -117.885716},
+          {lat: 33.882058, lng: -117.885738},
+          {lat: 33.882075, lng: -117.885716}
+          ];
+        var UniversityHall = [
+          {lat:33.879920, lng:-117.884259},
+          {lat:33.879935, lng:-117.884136},
+          {lat:33.879922, lng:-117.884059},
+          {lat:33.879871, lng:-117.884058},
+          {lat:33.879861, lng:-117.883867},
+          {lat:33.879620, lng:-117.883836},
+          {lat:33.879547, lng:-117.883865},
+          {lat:33.879545, lng:-117.884063},
+          {lat:33.879270, lng:-117.884044},
+          {lat:33.879270, lng:-117.884266},
+          {lat:33.879355, lng:-117.884360},
+          {lat:33.879533, lng:-117.884284},
+          {lat:33.879537, lng:-117.884530},
+          {lat:33.879579, lng:-117.884605},
+          {lat:33.879875, lng:-117.884612},
+          {lat:33.879880, lng:-117.884355},
+          {lat:33.879881, lng:-117.884259},
+          {lat:33.879928, lng:-117.884257},
+          {lat:33.879920, lng:-117.884259}
+          ];
+        var RubyGC = [
+          {lat:33.884102, lng:-117.883279},
+          {lat:33.883979, lng:-117.883135},
+          {lat:33.883807, lng:-117.883116},
+          {lat:33.883488, lng:-117.883114},
+          {lat:33.883231, lng:-117.883120},
+          {lat:33.883201, lng:-117.883130},
+          {lat:33.883201, lng:-117.883351},
+          {lat:33.883413, lng:-117.883363},
+          {lat:33.883420, lng:-117.883424},
+          {lat:33.883592, lng:-117.883429},
+          {lat:33.883871, lng:-117.883437},
+          {lat:33.884019, lng:-117.883389},
+          {lat:33.884102, lng:-117.883279}
+          ];
+        var LangsdorfHallCoords = [
+          {lat: 33.879129, lng: -117.884898},
+          {lat: 33.879134, lng: -117.884851},
+          {lat: 33.879135, lng: -117.884843},
+          {lat: 33.879127, lng: -117.884843},
+          {lat: 33.879127, lng: -117.884824},
+          {lat: 33.879175, lng: -117.884825},
+          {lat: 33.879175, lng: -117.884833},
+          {lat: 33.879185, lng: -117.884833},
+          {lat: 33.879187, lng: -117.884573},
+          {lat: 33.879178, lng: -117.884571},
+          {lat: 33.879176, lng: -117.884575},
+          {lat: 33.879176, lng: -117.884580},
+          {lat: 33.879129, lng: -117.884579},
+          {lat: 33.879131, lng: -117.884526},
+          {lat: 33.879138, lng: -117.884526},
+          {lat: 33.879138, lng: -117.884513},
+          {lat: 33.879136, lng: -117.884507},
+          {lat: 33.879184, lng: -117.884508},
+          {lat: 33.879186, lng: -117.884503},
+          {lat: 33.879192, lng: -117.884043},
+          {lat: 33.878841, lng: -117.884035},
+          {lat: 33.878834, lng: -117.884519},
+          {lat: 33.878887, lng: -117.884520},
+          {lat: 33.878871, lng: -117.884559},
+          {lat: 33.878870, lng: -117.884573},
+          {lat: 33.878880, lng: -117.884578},
+          {lat: 33.878880, lng: -117.884572},
+          {lat: 33.878850, lng: -117.884578},
+          {lat: 33.878851, lng: -117.884571},
+          {lat: 33.878842, lng: -117.884569},
+          {lat: 33.878818, lng: -117.884562},
+          {lat: 33.878814, lng: -117.884826},
+          {lat: 33.878825, lng: -117.884826},
+          {lat: 33.878831, lng: -117.884816},
+          {lat: 33.878880, lng: -117.884818},
+          {lat: 33.878879, lng: -117.884858},
+          {lat: 33.878870, lng: -117.884880},
+          {lat: 33.878870, lng: -117.884894},
+          {lat: 33.879129, lng: -117.884898}
+          ];
+        var McCarthyHallCoords = [
+          {lat: 33.879646, lng: -117.886362},
+          {lat: 33.879647, lng: -117.886357},
+          {lat: 33.879649, lng: -117.886351},
+          {lat: 33.879654, lng: -117.886351},
+          {lat: 33.879656, lng: -117.886337},
+          {lat: 33.879659, lng: -117.886247},
+          {lat: 33.879742, lng: -117.886249},
+          {lat: 33.879746, lng: -117.886139},
+          {lat: 33.879744, lng: -117.886131},
+          {lat: 33.879695, lng: -117.886129},
+          {lat: 33.879698, lng: -117.886019},
+          {lat: 33.879764, lng: -117.886025},
+          {lat: 33.879759, lng: -117.885995},
+          {lat: 33.879926, lng: -117.886002},
+          {lat: 33.879936, lng: -117.885995},
+          {lat: 33.879935, lng: -117.885989},
+          {lat: 33.879933, lng: -117.885988},
+          {lat: 33.879934, lng: -117.885921},
+          {lat: 33.879864, lng: -117.885918},
+          {lat: 33.879859, lng: -117.885588},
+          {lat: 33.879898, lng: -117.885589},
+          {lat: 33.879907, lng: -117.885645},
+          {lat: 33.879922, lng: -117.885686},
+          {lat: 33.879956, lng: -117.885675},
+          {lat: 33.879943, lng: -117.885644},
+          {lat: 33.879933, lng: -117.885603},
+          {lat: 33.879932, lng: -117.885590},
+          {lat: 33.879939, lng: -117.885590},
+          {lat: 33.879941, lng: -117.885542},
+          {lat: 33.879939, lng: -117.885538},
+          {lat: 33.879933, lng: -117.885538},
+          {lat: 33.879934, lng: -117.885525},
+          {lat: 33.879945, lng: -117.885488},
+          {lat: 33.879961, lng: -117.885455},
+          {lat: 33.879961, lng: -117.885448},
+          {lat: 33.879928, lng: -117.885431},
+          {lat: 33.879913, lng: -117.885465},
+          {lat: 33.879902, lng: -117.885507},
+          {lat: 33.879898, lng: -117.885536},
+          {lat: 33.879860, lng: -117.885535},
+          {lat: 33.879869, lng: -117.885096},
+          {lat: 33.879866, lng: -117.885090},
+          {lat: 33.879866, lng: -117.885053},
+          {lat: 33.879852, lng: -117.885023},
+          {lat: 33.879781, lng: -117.885050},
+          {lat: 33.879782, lng: -117.885023},
+          {lat: 33.879521, lng: -117.885014},
+          {lat: 33.879529, lng: -117.885042},
+          {lat: 33.879443, lng: -117.885040},
+          {lat: 33.879447, lng: -117.885543},
+          {lat: 33.879431, lng: -117.885544},
+          {lat: 33.879429, lng: -117.885591},
+          {lat: 33.879446, lng: -117.885592},
+          {lat: 33.879438, lng: -117.885921},
+          {lat: 33.879383, lng: -117.885918},
+          {lat: 33.879373, lng: -117.886329},
+          {lat: 33.879620, lng: -117.886337},
+          {lat: 33.879620, lng: -117.886356},
+          {lat: 33.879646, lng: -117.886362}
+          ];
 
-        // Construct the polygon.
-        // var quadPolygon = new google.maps.Polygon({
-        //   paths: quadCoords,
-        //   strokeColor: '#000000',
-        //   strokeOpacity: 0,
-        //   strokeWeight: 2,
-        //   fillColor: '#000000',
-        //   fillOpacity: 1
-        // });
-        //
-        // quadPolygon.setMap(map);
+        var educationBuildingPlygon = new google.maps.Polygon({
+          paths: [PLSCoords, PollakLibraryCoords, RubyGC, UniversityHall, LangsdorfHallCoords, McCarthyHallCoords],
+          strokeColor: '#000000',
+          strokeOpacity: 0,
+          strokeWeight: 2,
+          fillColor: '#FFA500',
+          fillOpacity: 1
+        });
 
-
+        educationBuildingPlygon.setMap(map);
         directionsDisplay.setMap(map);
 
         {% block maproute %} {% endblock %}
