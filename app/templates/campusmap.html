@@ -299,6 +299,10 @@
                 var contentString = '<div id="content">'+
                                     '<div id="siteNotice">'+
                                     '</div>'+
+                                    // '<div class="ui buttons">'+
+                                    // '<button class="ui inverted green button"  id="'+ bldid[0] + '-direction">Direction</button>'+
+                                    // '<button class="ui button">Street View</button>'+
+                                    // '</div>'+
                                     '<h1 id="firstHeading" class="firstHeading">'+ array[0] +'</h1>'+
                                     '<div id="bodyContent">'+ image +
 //                                    '<img src="{{url_for('static', filename='img/asktuffy2.png')}}">'+
@@ -306,6 +310,8 @@
                                     '<p><a href="' + array[2] + '">Link to '+ array[0] +'</a> '+
                                     '</div>'+
                                     '</div>';
+
+
 
                     var infowindow = new google.maps.InfoWindow({
                       content: contentString
@@ -321,6 +327,15 @@
                     });
 
                 marker.setPosition(new google.maps.LatLng(lat, lng));
+                // var iwbutton = document.getElementsByClassName('ui inverted button');
+                // alert(iwbutton)
+                // for (var i = 0; i < iwbutton.length; i++) {
+                //     var singlebutton = iwbutton[i];
+                //     alert(singlebutton)
+                // singlebutton.addEventListener('click', function() {
+                //     document.getElementById('src1').value = this.id;
+                //   });
+                // }
 
             })
         } else if (bldButtons[i].className == 'ui positive button') {
@@ -383,7 +398,7 @@
           {lat:33.881340, lng:-117.885703},
           {lat: 33.881334, lng: -117.885711}
         ];
-        var PollakLibraryCoords = [
+        var PLCoords = [
           {lat: 33.882109, lng: -117.885717},
           {lat: 33.882110, lng: -117.885700},
           {lat: 33.882139, lng: -117.885636},
@@ -428,7 +443,7 @@
           {lat: 33.882058, lng: -117.885738},
           {lat: 33.882075, lng: -117.885716}
           ];
-        var UniversityHall = [
+        var UHCoords = [
           {lat:33.879920, lng:-117.884259},
           {lat:33.879935, lng:-117.884136},
           {lat:33.879922, lng:-117.884059},
@@ -449,7 +464,7 @@
           {lat:33.879928, lng:-117.884257},
           {lat:33.879920, lng:-117.884259}
           ];
-        var RubyGC = [
+        var RGCCoords = [
           {lat:33.884102, lng:-117.883279},
           {lat:33.883979, lng:-117.883135},
           {lat:33.883807, lng:-117.883116},
@@ -464,7 +479,7 @@
           {lat:33.884019, lng:-117.883389},
           {lat:33.884102, lng:-117.883279}
           ];
-        var LangsdorfHallCoords = [
+        var LHCoords = [
           {lat: 33.879129, lng: -117.884898},
           {lat: 33.879134, lng: -117.884851},
           {lat: 33.879135, lng: -117.884843},
@@ -505,7 +520,7 @@
           {lat: 33.878870, lng: -117.884894},
           {lat: 33.879129, lng: -117.884898}
           ];
-        var McCarthyHallCoords = [
+        var MHCoords = [
           {lat: 33.879646, lng: -117.886362},
           {lat: 33.879647, lng: -117.886357},
           {lat: 33.879649, lng: -117.886351},
@@ -566,9 +581,90 @@
           {lat: 33.879620, lng: -117.886356},
           {lat: 33.879646, lng: -117.886362}
           ];
+        var DBHCoords = [
+          {lat: 33.879299, lng: -117.886533},
+          {lat: 33.879318, lng: -117.885031},
+          {lat: 33.879105, lng: -117.885020},
+          {lat: 33.879097, lng: -117.885053},
+          {lat: 33.879092, lng: -117.885107},
+          {lat: 33.878995, lng: -117.885109},
+          {lat: 33.878983, lng: -117.885554},
+          {lat: 33.879056, lng: -117.885559},
+          {lat: 33.879056, lng: -117.885617},
+          {lat: 33.878981, lng: -117.885619},
+          {lat: 33.878969, lng: -117.886610},
+          {lat: 33.879179, lng: -117.886610},
+          {lat: 33.879188, lng: -117.886580},
+          {lat: 33.879210, lng: -117.886571},
+          {lat: 33.879215, lng: -117.886542},
+          {lat: 33.879291, lng: -117.886539},
+          {lat: 33.879299, lng: -117.886533}
+        ];
+        var ECCoords = [
+          {lat: 33.881674, lng: -117.884549},
+          {lat: 33.881677, lng: -117.884285},
+          {lat: 33.881438, lng: -117.884278},
+          {lat: 33.881442, lng: -117.883931},
+          {lat: 33.881158, lng: -117.883931},
+          {lat: 33.881156, lng: -117.884171},
+          {lat: 33.881148, lng: -117.884171},
+          {lat: 33.881147, lng: -117.884220},
+          {lat: 33.881158, lng: -117.884221},
+          {lat: 33.881155, lng: -117.884492},
+          {lat: 33.881145, lng: -117.884492},
+          {lat: 33.881143, lng: -117.884542},
+          {lat: 33.881674, lng: -117.884549}
+        ];
+        var ECoords = [
+          {lat: 33.882519, lng: -117.883349},
+          {lat: 33.882520, lng: -117.883118},
+          {lat: 33.882141, lng: -117.883111},
+          {lat: 33.882138, lng: -117.883344},
+          {lat: 33.882519, lng: -117.883349}
+        ];
+        var GCoords = [
+          {lat: 33.882483, lng: -117.889420},
+          {lat: 33.882482, lng: -117.889334},
+          {lat: 33.882243, lng: -117.889333},
+          {lat: 33.882243, lng: -117.889304},
+          {lat: 33.882196, lng: -117.889305},
+          {lat: 33.882197, lng: -117.889333},
+          {lat: 33.882132, lng: -117.889334},
+          {lat: 33.882132, lng: -117.889376},
+          {lat: 33.882150, lng: -117.889377},
+          {lat: 33.882152, lng: -117.889441},
+          {lat: 33.882214, lng: -117.889442},
+          {lat: 33.882214, lng: -117.889508},
+          {lat: 33.882289, lng: -117.889507},
+          {lat: 33.882288, lng: -117.889421},
+          {lat: 33.882483, lng: -117.889420}
+        ];
+        var HCoords = [
+          {lat: 33.880634, lng: -117.884533},
+          {lat: 33.880635, lng: -117.884245},
+          {lat: 33.880576, lng: -117.884245},
+          {lat: 33.880585, lng: -117.883884},
+          {lat: 33.880534, lng: -117.883885},
+          {lat: 33.880534, lng: -117.883841},
+          {lat: 33.880401, lng: -117.883837},
+          {lat: 33.880400, lng: -117.883861},
+          {lat: 33.880386, lng: -117.883860},
+          {lat: 33.880383, lng: -117.883880},
+          {lat: 33.880338, lng: -117.883879},
+          {lat: 33.880331, lng: -117.884242},
+          {lat: 33.880274, lng: -117.884240},
+          {lat: 33.880269, lng: -117.884516},
+          {lat: 33.880386, lng: -117.884519},
+          {lat: 33.880387, lng: -117.884454},
+          {lat: 33.880516, lng: -117.884458},
+          {lat: 33.880515, lng: -117.884530},
+          {lat: 33.880634, lng: -117.884533}
+        ];
+
+        var EducationBuilding = [PLSCoords, PLCoords, RGCCoords, UHCoords, LHCoords, MHCoords, DBHCoords, ECCoords, ECoords, GCoords, HCoords];
 
         var educationBuildingPlygon = new google.maps.Polygon({
-          paths: [PLSCoords, PollakLibraryCoords, RubyGC, UniversityHall, LangsdorfHallCoords, McCarthyHallCoords],
+          paths: EducationBuilding,
           strokeColor: '#000000',
           strokeOpacity: 0,
           strokeWeight: 2,
