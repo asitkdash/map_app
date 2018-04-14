@@ -16,7 +16,7 @@ def getBuilding():
 
         "AS" : ["Automobile Shop", "33.883739, -117.889177"],
         "MC" : ["Mailing Center", "33.884281, -117.888742"],
-        
+
         "CC" : ["Children’s Center", "33.885800, -117.888476"],
         "CPAC" : ["Clayes Performing Arts Center", "33.880564, -117.886564"],
         "DBH" : ["Dan Black Hall", "33.879246, -117.886565"],
@@ -38,9 +38,9 @@ def getBuilding():
         "TSUST" : ["TSU Starbucks", "33.881583, -117.887998"],
         "CPT" : ["College Park Togos", "33.877711, -117.883507"],
         "TSUT" : ["TSU Togos", "33.881958, -117.887737"],
-        "BOFA" : ["BoFA Bank ATM", "33.881667, -117.887246"],
-        "CATM" : ["Chase ATM", "33.881667, -117.887246"],
-        "WATM" : ["Wells Fargo ATM", "33.881667, -117.887246"],
+        "BOFA" : ["BoFA Bank ATM", "33.881647, -117.887393"],
+        "CATM" : ["Chase ATM", "33.881643, -117.887331"],
+        "WATM" : ["Wells Fargo ATM", "33.881641, -117.887395"],
         "USB" : ["US-Bank", "33.881933, -117.887065"],
         "BA" : ["Becker Amphitheater","33.881278, -117.887079"],
         "ECSQ" : ["ECS Quad", "33.882277, -117.884115"],

@@ -1,13 +1,14 @@
 {% extends "campusmap.html" %}
 
 {% block display %}
-	<br>
-	<br>
-      <h2> Destination: {{ bld }} </h2>
-      {% for i in directions %}
-      <p> {{ i|safe }} </p>
-      <hr>
-      {% endfor %}
+<div class="ui centered card raised overlay" id="infocard">
+  <div class="image">
+  </div>
+  <div class="content">
+    <div class="header">{{ bld }}</div>
+    <div class="description"> You will be there in {{ tl }}.</div>
+   </div>
+</div>
 {% endblock %}
 
 {% block maproute %}
@@ -30,7 +31,7 @@
 {% endblock %}
 
 <!-- {% block time %}
-    document.getElementById('info').innerHTML=h+":"+m+":"+s;
+    document.getElementById('txt').innerHTML=h+":"+m+":"+s;
     var travelTime = parseInt("{{tl}}");
     var timeLeft = 30 - m;
     var arrival = timeLeft - travelTime
