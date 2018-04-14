@@ -85,13 +85,6 @@
     var markerButtons = document.getElementsByClassName('ui button marker');
     var dirButtons = document.getElementsByClassName('ui button positive');
 
-    // Style the markers a bit. This will be our listing marker icon.
-    var defaultIcon = makeMarkerIcon('0091ff');
-
-        // Create a "highlighted location" marker color for when the user
-        // mouses over the marker.
-    var highlightedIcon = makeMarkerIcon('FFFF24');
-
     const csufLocation = {
             lat: 33.881994,
             lng: -117.885076
@@ -362,10 +355,12 @@
         // to change the colors back and forth.
         marker.addListener('mouseover', function() {
           this.setIcon(highlightedIcon);
+          this.setAnimation(google.maps.Animation.BOUNCE);
         });
 
         marker.addListener('mouseout', function() {
           this.setIcon(defaultIcon);
+          this.setAnimation(null);
         });
 
         markers.push(marker);
@@ -373,6 +368,47 @@
         marker.setVisible(false);
 
         button.addEventListener('click', function() {
+
+            if (this.className == "ui button ebuildings marker") {
+              markers[i].setIcon(ebuildings);
+            }
+            else if (this.className == "ui button fdbuildings marker") {
+              markers[i].setIcon(fdbuildings);
+            }
+            else if (this.className == "ui button bbuildings marker") {
+              markers[i].setIcon(bbuildings);
+            }
+            else if (this.className == "ui button lm marker") {
+              markers[i].setIcon(lm);
+            }
+            else if (this.className == "ui button fbuildings marker") {
+              markers[i].setIcon(fbuildings);
+            }
+            else if (this.className == "ui button pbuildings marker") {
+              markers[i].setIcon(pbuildings);
+            }
+            else if (this.className == "ui button cy marker") {
+              markers[i].setIcon(cy);
+            }
+            else if (this.className == "ui button abuildings marker") {
+              markers[i].setIcon(abuildings);
+            }
+            else if (this.className == "ui button ssbuildings marker") {
+              markers[i].setIcon(ssbuildings);
+            }
+            else if (this.className == "ui button tbuildings marker") {
+              markers[i].setIcon(tbuildings);
+            }
+            else if (this.className == "ui button sbuildings marker") {
+              markers[i].setIcon(sbuildings);
+            }
+            else if (this.className == "ui button embuildings marker") {
+              markers[i].setIcon(embuildings);
+            }
+            else {
+              markers[i].setIcon(defaultIcon);
+            }
+
             if (this.value != "ON") {
 
                 markers[i].setVisible(true);
@@ -410,7 +446,7 @@
                 });
                 // Till here Info-Window
                 markers[i].setTitle(array[0]);
-                markers[i].setAnimation(DROP);
+                markers[i].setAnimation(google.maps.Animation.DROP);
             }
             else {
                 markers[i].setVisible(false);
@@ -427,17 +463,6 @@
                 document.getElementById('src1').value = this.id;
             });
         }
-    }
-
-    function makeMarkerIcon(markerColor) {
-      var markerImage = new google.maps.MarkerImage(
-        'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|'+ markerColor +
-        '|40|_|%E2%80%A2',
-        new google.maps.Size(21, 34),
-        new google.maps.Point(0, 0),
-        new google.maps.Point(10, 34),
-        new google.maps.Size(21,34));
-      return markerImage;
     }
 
     function initMap() { // displays map on page, sets up variables for the directions service for use later
