@@ -99,10 +99,9 @@
     }
 
     function getCurrPos(position) {
-        document.getElementById('location').value = position.coords.latitude + "," + position.coords.longitude;
-        // document.getElementById('location').value = curLoc;
-        // $('#CurrentLocation').data('value', curLoc);
-        //alert(document.getElementById('location').value);
+        var curLoc = position.coords.latitude + "," + position.coords.longitude;
+        document.getElementById('location').value = curLoc;
+        $('#CurrentLocation').data('value', curLoc);
     }
 
     function errorCallback() {}
