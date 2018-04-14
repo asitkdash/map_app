@@ -14,7 +14,7 @@ def getBuildingCheck(src):
                 else:
                     break
 
-            if len(abv) > 10:
+            if len(abv) >= 10:
                 abv = abv[:-9]
             # for i in src:
             #         if i != "-":

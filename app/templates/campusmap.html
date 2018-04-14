@@ -424,10 +424,10 @@
                 var contentString = '<div id="content">'+
                                     '<div id="siteNotice">'+
                                     '</div>'+
-                                    // '<div class="ui buttons">'+
-                                    // '<button class="ui inverted green button"  id="'+ bldid[0] + '-direction">Direction</button>'+
-                                    // '<button class="ui button">Street View</button>'+
-                                    // '</div>'+
+                                    '<div class="ui buttons">'+
+                                    '<button class="ui inverted green button"  id="'+ bldid[0] + '-direction">Direction</button>'+
+                                    '<button class="ui button">Street View</button>'+
+                                    '</div>'+
                                     '<h1 id="firstHeading" class="firstHeading">'+ array[0] +'</h1>'+
                                     '<div id="bodyContent">'+ image +
         //                                    '<img src="{{url_for('static', filename='img/asktuffy2.png')}}">'+
@@ -466,7 +466,9 @@
     }
 
     function initMap() { // displays map on page, sets up variables for the directions service for use later
-//        startTime();
+
+        var travellingMode = "WALKING";
+//        var travellingMode = "BICYCLING";
         directionsDisplay = new google.maps.DirectionsRenderer;
         directionsService = new google.maps.DirectionsService;
         var mapOptions = {
@@ -715,23 +717,6 @@
           {lat: 33.882138, lng: -117.883344},
           {lat: 33.882519, lng: -117.883349}
         ];
-        var GCoords = [
-          {lat: 33.882483, lng: -117.889420},
-          {lat: 33.882482, lng: -117.889334},
-          {lat: 33.882243, lng: -117.889333},
-          {lat: 33.882243, lng: -117.889304},
-          {lat: 33.882196, lng: -117.889305},
-          {lat: 33.882197, lng: -117.889333},
-          {lat: 33.882132, lng: -117.889334},
-          {lat: 33.882132, lng: -117.889376},
-          {lat: 33.882150, lng: -117.889377},
-          {lat: 33.882152, lng: -117.889441},
-          {lat: 33.882214, lng: -117.889442},
-          {lat: 33.882214, lng: -117.889508},
-          {lat: 33.882289, lng: -117.889507},
-          {lat: 33.882288, lng: -117.889421},
-          {lat: 33.882483, lng: -117.889420}
-        ];
         var HCoords = [
           {lat: 33.880634, lng: -117.884533},
           {lat: 33.880635, lng: -117.884245},
@@ -754,7 +739,7 @@
           {lat: 33.880634, lng: -117.884533}
         ];
 
-        var EducationBuilding = [PLSCoords, PLCoords, RGCCoords, UHCoords, LHCoords, MHCoords, DBHCoords, ECCoords, ECoords, GCoords, HCoords];
+        var EducationBuilding = [PLSCoords, PLCoords, RGCCoords, UHCoords, LHCoords, MHCoords, DBHCoords, ECCoords, ECoords, HCoords];
 
         var educationBuildingPlygon = new google.maps.Polygon({
           paths: EducationBuilding,

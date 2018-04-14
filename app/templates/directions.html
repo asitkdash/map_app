@@ -19,7 +19,8 @@
       directionsService.route({
         origin: "{{ cur }}",
         destination: "{{ coords }}",
-        travelMode: 'WALKING'
+        <!-- travelMode: 'WALKING' -->
+        travelMode: travellingMode
       }, function(response, status) {
         if (status === 'OK') {
           directionsDisplay.setDirections(response);
