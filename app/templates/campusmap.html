@@ -33,17 +33,17 @@
             <div class="item" data-value="{{ getCoords('PA') }}">
               Parking Lot A
             </div>
-            <!-- <div class="item" data-value="{{ getCoords('PD') }}">
-              Parking Lot D
-            </div> -->
-            <div class="item" data-value="{{ getCoords('PG') }}">
-              Parking Lot G
-            </div>
             <div class="item" data-value="{{ getCoords('PE') }}">
               Parking Lot E
             </div>
+            <div class="item" data-value="{{ getCoords('PG') }}">
+              Parking Lot G
+            </div>
             <div class="item" data-value="{{ getCoords('PS') }}">
               Parking Lot S
+            </div>
+            <div class="item" data-value="{{ getCoords('DDP') }}">
+            Dumbo Down Parking
             </div>
             <div class="item" data-value="{{ getCoords('NPS') }}">
               Nutwood Parking Structure
@@ -85,6 +85,7 @@
     var markerButtons = document.getElementsByClassName('ui button marker');
     var dirButtons = document.getElementsByClassName('ui button positive');
 
+
     const csufLocation = {
             lat: 33.881994,
             lng: -117.885076
@@ -115,7 +116,7 @@
 
         function pickImage(bld){
           if (bld == "CS"){
-            var image = '<img src="{{url_for('static', filename='img/TSU.jpg')}}" height="500" width="500">';
+            var image = '<img src="{{url_for('static', filename='img/CS.jpg')}}" height="500" width="500">';
           }
           else if (bld == "SGMH") {
             var image = '<img src="{{url_for('static', filename='img/SGMH.jpg')}}" height="500" width="500">';
@@ -346,9 +347,9 @@
         }
 
         var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(lat, lng),
-                icon: defaultIcon,
-                animation: google.maps.Animation.DROP
+            position: new google.maps.LatLng(lat, lng),
+            icon: defaultIcon,
+            animation: google.maps.Animation.DROP
         });
         // Two event listeners - one for mouseover, one for mouseout,
         // to change the colors back and forth.
@@ -414,11 +415,11 @@
                 this.value="ON";
                 //Added here for Info-Window
                 var bldid = this.id;
-
                 //for getting abv
                 bldid = bldid.split("-");
                 var array = maindict[bldid[0]];
                 var image = pickImage(bldid[0]);
+                var largeInfowindow = new google.maps.InfoWindow();
 
                 var contentString = '<div id="content">'+
                                     '<div id="siteNotice">'+
@@ -436,12 +437,10 @@
                                     '</div>';
 
 
-                var infowindow = new google.maps.InfoWindow({
-                  content: contentString
-                });
+                largeInfowindow.setContent(contentString);
 
                 markers[i].addListener('click', function() {
-                  infowindow.open(map, markers[i]);
+                  largeInfowindow.open(map, markers[i]);
                 });
                 // Till here Info-Window
                 markers[i].setTitle(array[0]);
@@ -451,9 +450,9 @@
                 markers[i].setVisible(false);
                 this.value="OFF";
             }
-
         });
     }
+
 
     for (let i = 0; i < dirButtons.length; i++) {
         var button = dirButtons[i];
@@ -463,6 +462,41 @@
             });
         }
     }
+
+  //   function showStreetView(marker, infowindow) {
+  //       alert("hi");
+  //       var streetViewService = new google.maps.StreetViewService();
+  //       var radius = 50;
+  //       // In case the status is OK, which means the pano was found, compute the
+  //         // position of the streetview image, then calculate the heading, then get a
+  //         // panorama from that and set the options
+  //         function getStreetView(data, status) {
+  //           if (status == google.maps.StreetViewStatus.OK) {
+  //             var nearStreetViewLocation = data.location.latLng;
+  //             var heading = google.maps.geometry.spherical.computeHeading(
+  //               nearStreetViewLocation, markers.position);
+  //               infowindow.setContent('<div>' + array[0] + '</div><div id="pano"></div>');
+  //               var panoramaOptions = {
+  //                 position: nearStreetViewLocation,
+  //                 pov: {
+  //                   heading: heading,
+  //                   pitch: 30
+  //                 }
+  //               };
+  //               var panorama = new google.maps.StreetViewPanorama(
+  //               document.getElementById('pano'), panoramaOptions);
+  //           }
+  //           else {
+  //             infowindow.setContent(contentString);
+  //           }
+  //         }
+  //         // Use streetview service to get the closest streetview image within
+  //     // 50 meters of the markers position
+  //     streetViewService.getPanoramaByLocation(marker.position, radius, getStreetView);
+  //     // Open the infowindow on the correct marker.
+  //     infowindow.open(map, marker);
+  // }
+
 
     function initMap() { // displays map on page, sets up variables for the directions service for use later
 
@@ -738,7 +772,185 @@
           {lat: 33.880634, lng: -117.884533}
         ];
 
+        var EastSideP = [
+          {lat: 33.880422, lng: -117.882338},
+          {lat: 33.880422, lng: -117.882257},
+          {lat: 33.880591, lng: -117.882267},
+          {lat: 33.880591, lng: -117.882224},
+          {lat: 33.880630, lng: -117.882219},
+          {lat: 33.880639, lng: -117.881257},
+          {lat: 33.880608, lng: -117.881262},
+          {lat: 33.880605, lng: -117.881223},
+          {lat: 33.880025, lng: -117.881210},
+          {lat: 33.880012, lng: -117.881251},
+          {lat: 33.879971, lng: -117.881249},
+          {lat: 33.879956, lng: -117.882254},
+          {lat: 33.880267, lng: -117.882262},
+          {lat: 33.880266, lng: -117.882326},
+          {lat: 33.880288, lng: -117.882338},
+          {lat: 33.880318, lng: -117.882341},
+          {lat: 33.880421, lng: -117.882338}
+        ];
+        var lotE = [
+          {lat: 33.882842, lng: -117.882222},
+          {lat: 33.882852, lng: -117.882207},
+          {lat: 33.882856, lng: -117.882195},
+          {lat: 33.882860, lng: -117.882134},
+          {lat: 33.882871, lng: -117.880997},
+          {lat: 33.882273, lng: -117.881017},
+          {lat: 33.881814, lng: -117.881012},
+          {lat: 33.881671, lng: -117.881009},
+          {lat: 33.881504, lng: -117.881012},
+          {lat: 33.881064, lng: -117.881025},
+          {lat: 33.880721, lng: -117.881039},
+          {lat: 33.880714, lng: -117.882075},
+          {lat: 33.880716, lng: -117.882099},
+          {lat: 33.880720, lng: -117.882119},
+          {lat: 33.880726, lng: -117.882135},
+          {lat: 33.880743, lng: -117.882160},
+          {lat: 33.880752, lng: -117.882167},
+          {lat: 33.880768, lng: -117.882171},
+          {lat: 33.880822, lng: -117.882177},
+          {lat: 33.880901, lng: -117.882181},
+          {lat: 33.881301, lng: -117.882193},
+          {lat: 33.881489, lng: -117.882197},
+          {lat: 33.881910, lng: -117.882209},
+          {lat: 33.882508, lng: -117.882226},
+          {lat: 33.882805, lng: -117.882236},
+          {lat: 33.882824, lng: -117.882232},
+          {lat: 33.882835, lng: -117.882228},
+          {lat: 33.882842, lng: -117.882222}
+        ];
+        var NutwoodP = [
+          {lat: 33.879423, lng: -117.889382},
+          {lat: 33.879443, lng: -117.887959},
+          {lat: 33.879485, lng: -117.887960},
+          {lat: 33.879488, lng: -117.887804},
+          {lat: 33.879498, lng: -117.887804},
+          {lat: 33.879499, lng: -117.887708},
+          {lat: 33.879444, lng: -117.887707},
+          {lat: 33.879445, lng: -117.887681},
+          {lat: 33.878618, lng: -117.887665},
+          {lat: 33.878594, lng: -117.889366},
+          {lat: 33.879423, lng: -117.889382}
+        ];
+        var lotR = [
+          {lat: 33.882463, lng: -117.889054},
+          {lat: 33.882465, lng: -117.888762},
+          {lat: 33.882461, lng: -117.888739},
+          {lat: 33.882453, lng: -117.888726},
+          {lat: 33.882436, lng: -117.888718},
+          {lat: 33.882312, lng: -117.888715},
+          {lat: 33.882305, lng: -117.889050},
+          {lat: 33.882463, lng: -117.889054}
+        ];
+        var DDownnsP = [
+          {lat: 33.884572, lng: -117.888140},
+          {lat: 33.884578, lng: -117.887488},
+          {lat: 33.884198, lng: -117.887477},
+          {lat: 33.884028, lng: -117.887469},
+          {lat: 33.883601, lng: -117.887461},
+          {lat: 33.883590, lng: -117.888126},
+          {lat: 33.884572, lng: -117.888140}
+        ];
+        var lotA = [
+          {lat: 33.887855, lng: -117.889923},
+          {lat: 33.887922, lng: -117.889360},
+          {lat: 33.887997, lng: -117.889017},
+          {lat: 33.888109, lng: -117.888631},
+          {lat: 33.888483, lng: -117.887622},
+          {lat: 33.887904, lng: -117.887327},
+          {lat: 33.887445, lng: -117.888491},
+          {lat: 33.885370, lng: -117.887627},
+          {lat: 33.885317, lng: -117.889484},
+          {lat: 33.886105, lng: -117.889510},
+          {lat: 33.886408, lng: -117.889553},
+          {lat: 33.887004, lng: -117.889655},
+          {lat: 33.887855, lng: -117.889923}
+        ];
+        var lotG = [
+          {lat: 33.888505, lng: -117.887370},
+          {lat: 33.888705, lng: -117.886635},
+          {lat: 33.888754, lng: -117.885876},
+          {lat: 33.888556, lng: -117.885855},
+          {lat: 33.888340, lng: -117.885951},
+          {lat: 33.888082, lng: -117.885965},
+          {lat: 33.887886, lng: -117.886013},
+          {lat: 33.887855, lng: -117.886957},
+          {lat: 33.887882, lng: -117.887048},
+          {lat: 33.888111, lng: -117.887129},
+          {lat: 33.888338, lng: -117.887290},
+          {lat: 33.888505, lng: -117.887370}
+        ];
+        var ArboP = [
+          {lat: 33.888258, lng: -117.885310},
+          {lat: 33.888262, lng: -117.885034},
+          {lat: 33.887737, lng: -117.885007},
+          {lat: 33.887715, lng: -117.885315},
+          {lat: 33.888258, lng: -117.885310}
+        ];
+        var lotI = [
+          {lat: 33.881654, lng: -117.883478},
+          {lat: 33.881664, lng: -117.882588},
+          {lat: 33.881333, lng: -117.882580},
+          {lat: 33.881320, lng: -117.883247},
+          {lat: 33.881263, lng: -117.883371},
+          {lat: 33.881346, lng: -117.883477},
+          {lat: 33.881654, lng: -117.883478}
+        ];
+        var lotF = [
+          {lat: 33.880770, lng: -117.883508},
+          {lat: 33.880919, lng: -117.883260},
+          {lat: 33.881071, lng: -117.883199},
+          {lat: 33.881074, lng: -117.882576},
+          {lat: 33.879847, lng: -117.882542},
+          {lat: 33.879818, lng: -117.883332},
+          {lat: 33.880026, lng: -117.883496},
+          {lat: 33.880740, lng: -117.883516},
+          {lat: 33.880770, lng: -117.883508}
+        ];
+        var CPFSParkingLot = [
+          {lat: 33.877301, lng: -117.883974},
+          {lat: 33.877307, lng: -117.882692},
+          {lat: 33.876445, lng: -117.882676},
+          {lat: 33.876437, lng: -117.883968},
+          {lat: 33.877301, lng: -117.883974}
+        ];
+        var lotS = [
+          {lat: 33.877301, lng: -117.883974},
+          {lat: 33.876441, lng: -117.882677},
+          {lat: 33.875857, lng: -117.882669},
+          {lat: 33.875843, lng: -117.883953},
+          {lat: 33.877301, lng: -117.883974}
+        ];
+        var lotCEast = [
+          {lat: 33.878562, lng: -117.887661},
+          {lat: 33.878573, lng: -117.887543},
+          {lat: 33.878711, lng: -117.887538},
+          {lat: 33.878720, lng: -117.886771},
+          {lat: 33.878393, lng: -117.886749},
+          {lat: 33.878389, lng: -117.887672},
+          {lat: 33.878562, lng: -117.887661}
+        ];
+        var lotCWest = [
+          {lat: 33.878536, lng: -117.889227},
+          {lat: 33.878553, lng: -117.888442},
+          {lat: 33.878226, lng: -117.888431},
+          {lat: 33.878237, lng: -117.889244},
+          {lat: 33.878536, lng: -117.889227}
+        ];
+        var lotC = [
+          {lat: 33.878556, lng: -117.888434},
+          {lat: 33.878529, lng: -117.888302},
+          {lat: 33.878455, lng: -117.888208},
+          {lat: 33.878366, lng: -117.888246},
+          {lat: 33.878215, lng: -117.888262},
+          {lat: 33.878228, lng: -117.888428},
+          {lat: 33.878556, lng: -117.888434}
+        ];
+
         var EducationBuilding = [PLSCoords, PLCoords, RGCCoords, UHCoords, LHCoords, MHCoords, DBHCoords, ECCoords, ECoords, HCoords];
+        var parkingStructures = [EastSideP, lotE, NutwoodP, lotR, DDownnsP, lotA, lotG, ArboP, lotI, lotF, CPFSParkingLot, lotS, lotCEast, lotCWest, lotC];
 
         var educationBuildingPlygon = new google.maps.Polygon({
           paths: EducationBuilding,
@@ -749,7 +961,17 @@
           fillOpacity: 1
         });
 
+        var parkingPolygon = new google.maps.Polygon({
+          paths: parkingStructures,
+          strokeColor: '#000000',
+          strokeOpacity: 0,
+          strokeWeight: 2,
+          fillColor: '#00FFFF',
+          fillOpacity: 1
+        });
+
         educationBuildingPlygon.setMap(map);
+        parkingPolygon.setMap(map);
         directionsDisplay.setMap(map);
 
         {% block maproute %} {% endblock %}
