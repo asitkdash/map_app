@@ -64,6 +64,9 @@
                  <button class="ui blue compact icon button" type="Submit" id="submit">
                     <i class="search icon"></i>
                 </button>
+                <!-- <button class="ui blue compact icon button" type="Submit" id="Draw">
+                   Drawing Manager
+               </button> -->
         </div>
     </div>
 {% endblock %}
@@ -112,7 +115,6 @@
         var latlng = button.value.split(',');
         var lat = parseFloat(latlng[0]);
         var lng = parseFloat(latlng[1]);
-        var largeInfowindow = new google.maps.InfoWindow();
 
         function pickImage(bld){
           if (bld == "CS"){
@@ -420,7 +422,6 @@
                 var array = maindict[bldid[0]];
                 var image = pickImage(bldid[0]);
 
-
                 var contentString = '<div id="content">'+
                                     '<div id="siteNotice">'+
                                     '</div>'+
@@ -437,10 +438,12 @@
                                     '</div>';
 
 
-                largeInfowindow.setContent(contentString);
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                  });
 
                 markers[i].addListener('click', function() {
-                  largeInfowindow.open(map, markers[i]);
+                  infowindow.open(map, markers[i]);
                 });
                 // Till here Info-Window
                 markers[i].setTitle(array[0]);
@@ -463,39 +466,6 @@
         }
     }
 
-  //   function showStreetView(marker, infowindow) {
-  //       alert("hi");
-  //       var streetViewService = new google.maps.StreetViewService();
-  //       var radius = 50;
-  //       // In case the status is OK, which means the pano was found, compute the
-  //         // position of the streetview image, then calculate the heading, then get a
-  //         // panorama from that and set the options
-  //         function getStreetView(data, status) {
-  //           if (status == google.maps.StreetViewStatus.OK) {
-  //             var nearStreetViewLocation = data.location.latLng;
-  //             var heading = google.maps.geometry.spherical.computeHeading(
-  //               nearStreetViewLocation, markers.position);
-  //               infowindow.setContent('<div>' + array[0] + '</div><div id="pano"></div>');
-  //               var panoramaOptions = {
-  //                 position: nearStreetViewLocation,
-  //                 pov: {
-  //                   heading: heading,
-  //                   pitch: 30
-  //                 }
-  //               };
-  //               var panorama = new google.maps.StreetViewPanorama(
-  //               document.getElementById('pano'), panoramaOptions);
-  //           }
-  //           else {
-  //             infowindow.setContent(contentString);
-  //           }
-  //         }
-  //         // Use streetview service to get the closest streetview image within
-  //     // 50 meters of the markers position
-  //     streetViewService.getPanoramaByLocation(marker.position, radius, getStreetView);
-  //     // Open the infowindow on the correct marker.
-  //     infowindow.open(map, marker);
-  // }
     var PLSCoords = [
       {lat: 33.881334, lng: -117.885711},
       {lat: 33.881341, lng: -117.885341},
@@ -935,6 +905,7 @@
     var parkingStructures = [EastSideP, lotE, NutwoodP, lotR, DDownnsP, lotA, lotG, ArboP, lotI, lotF, CPFSParkingLot, lotS, lotCEast, lotCWest, lotC];
 
     var educationBuildingPlygon = new google.maps.Polygon({
+      clickable: true,
       paths: EducationBuilding,
       strokeColor: '#000000',
       strokeOpacity: 0,
@@ -948,20 +919,21 @@
       strokeColor: '#000000',
       strokeOpacity: 0,
       strokeWeight: 2,
-      fillColor: '#00FFFF',
+      fillColor: '#27AE60',
       fillOpacity: 1
     });
 
     educationBuildingPlygon.setMap(map);
     parkingPolygon.setMap(map);
 
-    var addListenersOnPolygon = function(polygon) {
-      google.maps.event.addListener(polygon, 'click', function (event) {
-        alert("polygon");
-      });
-    }
-
-    addListenersOnPolygon(educationBuildingPlygon);
+    // var addListenersOnPolygon = function(polygon) {
+    //   google.maps.event.addListener(polygon, 'click', function (event) {
+    //
+    //     alert("polygon");
+    //   });
+    // }
+    //
+    // addListenersOnPolygon(educationBuildingPlygon);
 
 
 
