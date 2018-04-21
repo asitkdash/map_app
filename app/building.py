@@ -13,10 +13,8 @@ def getBuilding():
         "CSH" : ["Carpenter Shop","33.884028, -117.888266"],
         "MC" : ["Mailing Center","33.884155, -117.888760"],
         "SR" : ["Shipping & Recieving","33.883783, -117.888760"],
-
         "AS" : ["Automobile Shop", "33.883739, -117.889177"],
         "MC" : ["Mailing Center", "33.884281, -117.888742"],
-
         "CC" : ["Children’s Center", "33.885800, -117.888476"],
         "CPAC" : ["Clayes Performing Arts Center", "33.880564, -117.886564"],
         "DBH" : ["Dan Black Hall", "33.879246, -117.886565"],

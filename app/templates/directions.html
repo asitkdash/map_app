@@ -2,16 +2,22 @@
 
 {% block display %}
 <div class="ui centered card raised overlay" id="infocard">
-  <div class="image">
-  </div>
   <div class="content">
     <div class="header">{{ bld }}</div>
     <div class="description"> You will be there in {{ tl }}.</div>
-   </div>
+    <div id="ui fitted divider"></div>
+  </div>
+
+  <div id="contentCard">
+  </div>
 </div>
 {% endblock %}
 
 {% block maproute %}
+      let array = maindict["{{ bldId }}"];
+      let image = pickImage("{{ bldId }}");
+      document.getElementById("contentCard").innerHTML = '<div id="content">' + fillContent('{{ bldId }}', array[0], array[1], array[2], image);
+
       GeoMarker = new GeolocationMarker();
       GeoMarker.setCircleOptions({visible: false});
       GeoMarker.setMap(map);
@@ -28,23 +34,10 @@
           window.alert('Directions request failed due to ' + status);
         }
       });
-
 {% endblock %}
 
-<!-- {% block time %}
-    document.getElementById('txt').innerHTML=h+":"+m+":"+s;
-    var travelTime = parseInt("{{tl}}");
-    var timeLeft = 30 - m;
-    var arrival = timeLeft - travelTime
-    if(arrival < 10){
-      document.getElementById('warning').style.visibility="visible";
-      if(arrival < 0){
-        document.getElementById('warning').style.background="red";
-        document.getElementById('warning').innerHTML="RUN! " + "You'll be there: " + arrival * -1 + " mins late!";
-      }
-      else{
-        document.getElementById('warning').style.background="orange";
-        document.getElementById('warning').innerHTML="You'll be there: " + arrival + " mins early";
-      }
-    }
-{% endblock %} -->
+{% block saveLocation %}
+  $('#CurrentLocation').attr('data-value', '{{ userLoc }}');
+  $('.ui.dropdown').dropdown('set selected', '{{ cur }}');
+{% endblock %}
+
