@@ -4,15 +4,6 @@ $('.ui.dropdown').dropdown({
     }
 });
 
-$(document).ready(function(){
-     $('#loginbutton').click(function(){
-        $('#loginmodal').modal('show');
-     });
-     $('#offline-map').click(function(){
-        $('#legendmodal').modal('show');
-     });
-});
-
 $('.ui.sidebar').sidebar({
         context: $('#sidemenu'),
         dimPage: false,

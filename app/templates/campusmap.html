@@ -68,8 +68,6 @@
       California State University, Fullerton
     </h3>
     <div class="ui fitted divider"></div>
-
-    <div class="ui fitted divider"></div>
   	<div class="ui simple dropdown item">
       <i class="teal book icon"></i>
           <div class="ui checkbox ebuildings">
@@ -417,12 +415,6 @@
                   <button class="ui positive button" id="PI-direction">Direction</button>
               </div>
 
-              <div class="ui buttons" id="PR">
-                  <button class="ui button pbuildings marker" id="PR-btn" value="{{ getCoords('PR') }}" type="button"><i class="teal car icon"></i>Parking Lot R</button>
-                  <div class="or"></div>
-                  <button class="ui positive button" id="PR-direction">Direction</button>
-              </div>
-
               <div class="ui buttons" id="PS">
                   <button class="ui button pbuildings marker" id="PS-btn" value="{{ getCoords('PS') }}" type="button"><i class="teal car icon"></i>Parking Lot S</button>
                   <div class="or"></div>
@@ -667,7 +659,7 @@
 
   </div>
 </form>
-    <div id="legendmodal" class="ui modal">
+  <div id="legendmodal" class="ui modal">
       <h4 class="ui horizontal divider header">
         <i class="teal bar chart icon"></i>Abbreviation - Building Name [<--Legend-->]
       </h4>
@@ -710,10 +702,10 @@
          </div>
         </div>
 
-         <div class="ui fitted divider"></div>
-         <div class="ui fitted divider"></div>
+        <div class="ui fitted divider"></div>
+        <div class="ui fitted divider"></div>
 
-         <div class="ui four column grid">
+        <div class="ui four column grid">
            <div class="column">
              <p>
                <p><i class="teal thumbs up icon"></i><strong>Student Services</strong><br></p><p>ARSC - Admission and Records Service Center</p><p> CRC - Career Center</p><p> RH - Resident Hall</p><p> SH - Student Housing</p><p> SRC - Student Recreation Center</p>
@@ -734,8 +726,8 @@
                 <p><i class="teal plus icon"></i><strong>Emergency</strong><br></p><p>SHCC - Student Health & Counseling Center</p><p>UP - University Police</p>
               </p>
             </div>
-       </div>
-      </div>
+       	</div>
+  	</div>
   </div>
 {% endblock %}
 
@@ -757,6 +749,8 @@
     var contentString;
     var markerButtons = document.getElementsByClassName('ui button marker');
     var dirButtons = document.getElementsByClassName('ui button positive');
+    var originalColor;
+    var flag;
 
     const csufLocation = {
             lat: 33.880300,
@@ -764,7 +758,7 @@
     };
 
     var EducationBuilding = [PLSCoords, PLCoords, RGCCoords, UHCoords, LHCoords, MHCoords, DBHCoords, ECCoords, ECoords, HCoords];
-    var parkingStructures = [EastSideP, lotE, NutwoodP, lotR, DDownnsP, lotA, lotASouth, lotG, ArboP, lotI, lotF, CPFSParkingLot, lotS, lotCEast, lotCWest, lotC, lotH, StateCollegeParkingStructure];
+    var parkingStructures = [EastSideP, lotE, NutwoodP, lotR, DDownnsP, lotA, lotG, ArboP, lotI, lotF, CPFSParkingLot, lotS, lotCEast, lotCWest, lotC];
 
     initMap();
     {% block saveLocation %}{% endblock %}
@@ -785,14 +779,14 @@
 
     function fillContent(bldid, bldname, desc, link, image) {
     	return 	'<div id="bodyContent">'+ image +
-                '<p><b>'+ bldname + '</b> :'+ desc + '</p>'+
-                '<p><a href="' + link + '">Link to '+ bldname +'</a> '+
+                '<p><b>'+ bldname + '</b>: '+ desc + '</p>' +
+                '<p><a href="' + link + '">Link to '+ bldname +'</a></p>' +
                 '</div>'+
                 '</div>';
     }
 
-    function pickImage(bld){
-			var image = '<img src="static/img/' + bld + '.jpg" height="200" width="360">';
+    function pickImage(bld, h, w){
+			var image = '<img src="static/img/' + bld + '.jpg" height="' + h + '" width="' + w + '">';
 			return image;
     }
 
@@ -801,9 +795,7 @@
         var latlng = button.value.split(',');
         var lat = parseFloat(latlng[0]);
         var lng = parseFloat(latlng[1]);
-        var originalColor;
-        var flag;
-
+       
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(lat, lng),
             icon: defaultIcon,
@@ -812,26 +804,25 @@
         // Two event listeners - one for mouseover, one for mouseout,
         // to change the colors back and forth.
         marker.addListener('mouseover', function() {
-          originalColor = this.getIcon();
-          this.setIcon(highlightedIcon);
-          this.setAnimation(google.maps.Animation.BOUNCE);
-        });
+         originalColor = this.getIcon();
+         this.setIcon(highlightedIcon);
+         this.setAnimation(google.maps.Animation.BOUNCE);
+       });
 
-        marker.addListener('click', function() {
-          flag = "OK";
-        });
+		marker.addListener('click', function() {
+			flag = "OK";
+		});
 
-        marker.addListener('mouseout', function() {
-
-          if (flag == "OK") {
-            this.setIcon(defaultIcon);
-          }
-          else {
-            this.setIcon(originalColor);
-          }
-          flag = "NOK";
-          this.setAnimation(null);
-        });
+		marker.addListener('mouseout', function() {
+		if (flag == "OK") {
+			this.setIcon(defaultIcon);
+		}
+		else {
+			this.setIcon(originalColor);
+		}
+		flag = "NOK";
+			this.setAnimation(null);
+		});
 
         markers.push(marker);
         marker.setMap(map);
@@ -888,19 +879,19 @@
                 //for getting abv
                 bldid = bldid.split("-");
                 var array = maindict[bldid[0]];
-                var image = pickImage(bldid[0]);
+                var image = pickImage(bldid[0], 200, 360);
                 contentString = '<div id="content">'+
                 				'<button class="ui green button" id="' + bldid[0] +
                 				'-direction" onclick="document.getElementById(this.id).click()">Direction</button>' +
                 				'<h1 id="firstHeading" class="firstHeading">'+ array[0] +'</h1>';
-
                 contentString += fillContent(bldid[0], array[0], array[1], array[2], image);
 
                 var infoBubble = new InfoBubble({
                     content: contentString,
-                    autopanMargin: 1000,
-                    maxWidth: 600,
+                    autopanMargin: 10,
+                    maxWidth: 550,
                     minWidth: 550,
+                    minHeight: 400,
                     borderWidth: 2,
                     borderColor: '#000000',
                     padding: 20,
@@ -909,7 +900,7 @@
                     closeSrc: 'https://static.wixstatic.com/media/34b396_c3723d3c68e941229e546a46a69311eb~mv2.png/v1/fit/w_750,h_750/34b396_c3723d3c68e941229e546a46a69311eb~mv2.png'
                 });
                 markers[i].addListener('click', function() {
-                  infoBubble.open(map, markers[i]);
+					infoBubble.open(map, markers[i]);
                 });
                 // Till here Info-Window
                 markers[i].setTitle(array[0]);
@@ -922,7 +913,6 @@
         });
     }
 
-
     for (let i = 0; i < dirButtons.length; i++) {
         var button = dirButtons[i];
         if (button.className === 'ui positive button') {
@@ -932,7 +922,7 @@
             });
         }
     }
-
+    
     var educationBuildingPlygon = new google.maps.Polygon({
       clickable: true,
       paths: EducationBuilding,
@@ -961,9 +951,18 @@
    	});
 
    	campusPath.setMap(map);
+
     educationBuildingPlygon.setMap(map);
     parkingPolygon.setMap(map);
 
+    // var addListenersOnPolygon = function(polygon) {
+    //   google.maps.event.addListener(polygon, 'click', function (event) {
+    //
+    //     alert("polygon");
+    //   });
+    // }
+    //
+    // addListenersOnPolygon(educationBuildingPlygon);
 
     function initMap() { // displays map on page, sets up variables for the directions service for use later
         var travellingMode = "WALKING";

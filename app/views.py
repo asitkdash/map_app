@@ -9,7 +9,7 @@ from .buildingcheck import getBuildingCheck
 from .buildingcheck import getBldId
 from .key import getKey
 
-@app.route('/home')
+@app.route('/')
 def home():
 	return render_template('home.html')
 

@@ -73,7 +73,6 @@ def getBuilding():
         "PG" : ["Parking Lot G", "33.888351, -117.886556"],
         "PH" : ["Parking Lot H", "33.883649, -117.883672"],
         "PI" : ["Parking Lot I", "33.881469, -117.882987"],
-        "PR" : ["Parking Lot R", "33.882366, -117.888859"],
         "PS" : ["Parking Lot S", "33.876372, -117.883320"],
         "AP" : ["Arboritum Parking", "33.887800, -117.885210"],
         "CPFSP" : ["CPFS Parking", "33.877133, -117.883338"],

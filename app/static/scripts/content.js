@@ -1,5 +1,5 @@
 var maindict = {
-  "CS" : ["Computer Science","We provide students with:a strong knowledge of computer science fundamentals and computer system technology. practical problem-solving skills for creating computer systems applications. the ability and motivation to adapt as technology advances.Creative research and professional development by our faculty and our students is essential to our success.","http://www.fullerton.edu/ecs/cs/"],
+  "CS" : ["Computer Science","We provide students with a strong knowledge of computer science fundamentals and computer system technology. practical problem-solving skills for creating computer systems applications. the ability and motivation to adapt as technology advances.Creative research and professional development by our faculty and our students is essential to our success.","http://www.fullerton.edu/ecs/cs/"],
   "SGMH" : ["Steven G. Mihalyo","Located in one of the most vibrant and entrepreneurial business communities in the United States, Mihaylo College of Business and Economics at California State University, Fullerton is the largest accredited business school on the West Coast, nationally recognized for accreditation in both its business and accounting programs. Mihaylo provides a world-class business education, offering graduate and undergraduate programs that integrate classroom education with best business practices, technology, award-winning research, functional applications, and real-world experience. Our network of over 50,000 alumni and business partners are the driving force of Southern California business.", "https://business.fullerton.edu/"],
   "PL" : ["Pollak Library","The Pollak Library at California State University, Fullerton serves over 37,000 students and 2,100 full- and part-time faculty members.  Established in 1959, the Library was officially renamed the The Paulina June and George Pollak Library in 1998 in recognition of a $1 million donation received from the Pollaks.", "http://library.fullerton.edu/"],
   "MH" : ["McCarthy Hall","McCarthy Hall", "http://www.fullerton.edu/"],
@@ -68,7 +68,6 @@ var maindict = {
   "PG" : ["Parking Lot G", "Parking Lot G", ""],
   "PH" : ["Parking Lot H", "Parking Lot H", ""],
   "PI" : ["Parking Lot I", "Parking Lot I", ""],
-  "PR" : ["Parking Lot R", "Parking Lot R", ""],
   "PS" : ["Parking Lot S", "Parking Lot S", ""],
   "AP" : ["Arboritum Parking", "Arboritum Parking", ""],
   "CPFSP" : ["CPFS Parking", "CPFS Parking", ""],

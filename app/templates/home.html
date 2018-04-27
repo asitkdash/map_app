@@ -1,5 +1,96 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h1> Hello </h1>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<body>
+    <style>
+        section {
+          margin: 0;
+          padding: 0;
+          font-size: 100%;
+          font: inherit;
+        }
+
+        .container {
+          height: 100%;
+        }
+
+        h21 {
+          color: white;
+          text-transform: uppercase;
+          font-size: 90px;
+          font-weight: 400;
+          padding-left: 50px;
+          margin: 500px 0 0 0;
+
+		}
+		p21 {
+		  font-family: "Garamond Header", sans-serif;
+          color: white;
+          font-size:16px;
+
+
+        }
+        .ex1{
+        text-align: left;
+        }
+        .content {
+          display: table-cell;
+          vertical-align: middle;
+          text-align: center;
+        }
+
+        .sub-title {
+          margin: 50px auto;
+          font-size: 18px;
+          line-height: 23px;
+          text-transform: uppercase;
+          padding-left: 60px;
+        }
+
+        .button {
+          display: inline-block;
+          padding: 6px 10px;
+          color: #cafaea;
+          border: 1px solid #cafaea;
+          border-radius: 3px;
+          font-weight: 700;
+          line-height: normal;
+          text-decoration: none;
+          text-align: center;
+          text-transform: uppercase;
+        }
+
+    </style>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div  style = transition-duration: 5s; class ="w3-animate-opacity">
+    <header class = "container">
+        <section class = "content">
+            <div style= padding-top:300px;>
+            <h21>Welcome to Titan Maps</h21>
+
+
+
+                <div style = "color:white;" class="w3-center">
+                    <!--</br> Click here to access the map-->
+                </div>
+                <!--<div style=padding-top=300px; class = "w3-center"><a class="ui item w3-button w3-wide w3-black" style="opacity: .8"  href="/map">Map</a></div>-->
+            </div>
+
+        </section>
+		<section class = "ex1">
+			<div style = padding-left:60px;>
+                <p21><h3>Titan Map is an interactive map designed to help you get around CSUF main campus.</h3></br> </p21>
+			</div >
+		</section>
+    </header>
+
+    </div>
+
+</body>
+
+
 {% endblock %}

@@ -17,55 +17,70 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <style>
         body {
-            background: url(static/img/university5.jpg);
             background-size: cover;
             background-size: 100%;
+            background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(static/img/bg6.png);
+      			background-size: cover;
+      			background-repeat: no-repeat;
+      			background-color: black;
+      			background-position: center center;
+      			background-attachment: fixed;
         }
     </style>
 </head>
 
 <body>
 
-  <div class="ui attached four item inverted menu" id="navbar">
-    <a class="ui item" href="/home">Home</a>
-    <a class="ui item" href="/map">Map</a>
-    <a href="/contact" class="item" id="team"><i class="phone icon"></i>Meet The Team</a>
-    <div class="right menu">
-        <div class="ui blue left tiny attached button signupmodal" id="signupbutton">Sign up</div>
-        <div class="ui blue right tiny attached button loginmodal" id="loginbutton"><i class="white signup icon"></i>Login</div></a>
-    </div>
-  </div>
+	<div class="ui attached four item inverted menu" id="navbar">
+		<a class="ui item" href="/">Home</a>
+		<a class="ui item" href="/map">Map</a>
+		<a class="ui item" href="/contact" class="item" id="team"><i class="phone icon"></i>Meet The Team</a>
+		<div class="right menu">
+		    <div class="ui blue left tiny attached button signupmodal" id="signupbutton">Sign up</div>
+		    <div class="ui blue right tiny attached button loginmodal" id="loginbutton"><i class="white signup icon"></i>Login</div></a>
+		</div>
+	</div>
 
-{% block bar %}{% endblock %}
+	{% block bar %}{% endblock %}
 
-  <div class="pusher">
+ 	<div class="pusher">
       <div class="ui modal" id="loginmodal">
-          <div class="content">
-              <div class="ui middle aligned center aligned grid">
-                  <div class="column">
-                      <div class="content">
-                          <h1 class="ui blue image header">Log-in to your account </h1>
-                      </div>
-                      <form class="ui large form">
-                          <div class="field">
-                              <div class="ui left icon input">
-                                  <i class="user icon"></i> <input name="email" placeholder="Username" type="text">
-                              </div>
-                          </div>
-                          <div class="field">
-                              <div class="ui left icon input">
-                                  <i class="lock icon"></i> <input name="password" placeholder="Password" type="password">
-                              </div>
-                          </div>
-                          <div class="ui fluid large blue submit button">
+         	<div class="content">
+           	    <div class="ui middle aligned center aligned grid">
+                    <div class="column">
+                        <div class="content">
+                        	<h1 class="ui blue image header">Log-in to your account </h1>
+                        </div>
+                        <form class="ui large form">
+                            <div class="field">
+                                <div class="ui left icon input">
+                                	<i class="user icon"></i> <input name="email" placeholder="Username" type="text">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui left icon input">
+                                	<i class="lock icon"></i> <input name="password" placeholder="Password" type="password">
+                                </div>
+                            </div>
+                            <div class="ui fluid large blue submit button">
                               Login
-                          </div>
-                      </form>
-                  </div>
-              </div>
-          </div>
-      </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+         	</div>
+      	</div>
       {% block content %}{% endblock %}
-  </div>
-  {% block mapscript %}{% endblock %}
+  	</div>
+    {% block mapscript %}{% endblock %}
+	<script>
+  	$(document).ready(function(){
+     $('#loginbutton').click(function(){
+        $('#loginmodal').modal('show');
+     });
+     $('#offline-map').click(function(){
+        $('#legendmodal').modal('show');
+     });
+	});
+	</script>
 </body>
