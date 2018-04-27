@@ -415,6 +415,12 @@
                   <button class="ui positive button" id="PI-direction">Direction</button>
               </div>
 
+              <div class="ui buttons" id="PR">
+                  <button class="ui button pbuildings marker" id="PR-btn" value="{{ getCoords('PR') }}" type="button"><i class="teal car icon"></i>Parking Lot R</button>
+                  <div class="or"></div>
+                  <button class="ui positive button" id="PR-direction">Direction</button>
+              </div>
+
               <div class="ui buttons" id="PS">
                   <button class="ui button pbuildings marker" id="PS-btn" value="{{ getCoords('PS') }}" type="button"><i class="teal car icon"></i>Parking Lot S</button>
                   <div class="or"></div>
@@ -795,7 +801,7 @@
         var latlng = button.value.split(',');
         var lat = parseFloat(latlng[0]);
         var lng = parseFloat(latlng[1]);
-       
+
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(lat, lng),
             icon: defaultIcon,
@@ -922,7 +928,7 @@
             });
         }
     }
-    
+
     var educationBuildingPlygon = new google.maps.Polygon({
       clickable: true,
       paths: EducationBuilding,
