@@ -763,8 +763,8 @@
             lng: -117.885076
     };
 
-    var EducationBuilding = [PLSCoords, PLCoords, RGCCoords, UHCoords, LHCoords, MHCoords, DBHCoords, ECCoords, ECoords, HCoords];
-    var parkingStructures = [EastSideP, lotE, NutwoodP, lotR, DDownnsP, lotA, lotG, ArboP, lotI, lotF, CPFSParkingLot, lotS, lotCEast, lotCWest, lotC];
+    var EducationBuilding = [PLSCoords, PLCoords, RGCCoords, UHCoords, LHCoords, MHCoords, DBHCoords, ECCoords, ECoords, HCoords, CCCoords, CSCoords];
+    var parkingStructures = [EastSideP, lotE, NutwoodP, lotR, DDownnsP, lotA, lotG, ArboP, lotI, lotF, CPFSParkingLot, lotS, lotCEast, lotCWest, lotC, lotH, StateCollegeParkingStructure, lotASouth];
 
     initMap();
     {% block saveLocation %}{% endblock %}
@@ -905,8 +905,9 @@
                     //disableAutoPan: true,
                     closeSrc: 'https://static.wixstatic.com/media/34b396_c3723d3c68e941229e546a46a69311eb~mv2.png/v1/fit/w_750,h_750/34b396_c3723d3c68e941229e546a46a69311eb~mv2.png'
                 });
+
                 markers[i].addListener('click', function() {
-					infoBubble.open(map, markers[i]);
+                  infoBubble.open(map, markers[i]);
                 });
                 // Till here Info-Window
                 markers[i].setTitle(array[0]);
@@ -962,13 +963,12 @@
     parkingPolygon.setMap(map);
 
     // var addListenersOnPolygon = function(polygon) {
-    //   google.maps.event.addListener(polygon, 'click', function (event) {
-    //
-    //     alert("polygon");
+    //   google.maps.event.addListener(polygon, 'mouseover', function (event) {
+    //     alert("polygon")
     //   });
     // }
-    //
-    // addListenersOnPolygon(educationBuildingPlygon);
+
+    addListenersOnPolygon(educationBuildingPlygon);
 
     function initMap() { // displays map on page, sets up variables for the directions service for use later
         var travellingMode = "WALKING";
