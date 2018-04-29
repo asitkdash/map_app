@@ -763,7 +763,7 @@
             lng: -117.885076
     };
 
-    var EducationBuilding = [PLSCoords, PLCoords, RGCCoords, UHCoords, LHCoords, MHCoords, DBHCoords, ECCoords, ECoords, HCoords, CCCoords, CSCoords];
+    var EducationBuilding = [PLSCoords, PLCoords, RGCCoords, UHCoords, LHCoords, MHCoords, DBHCoords, ECCoords, ECoords, HCoords, CCCoords, CSCoords, clayesPerformingArtsCenter, visualArts, kinesologyAndHealthScience, mihaylo];
     var parkingStructures = [EastSideP, lotE, NutwoodP, lotR, DDownnsP, lotA, lotG, ArboP, lotI, lotF, CPFSParkingLot, lotS, lotCEast, lotCWest, lotC, lotH, StateCollegeParkingStructure, lotASouth];
 
     initMap();
@@ -945,7 +945,7 @@
       strokeColor: '#000000',
       strokeOpacity: 0,
       strokeWeight: 2,
-      fillColor: '#00B0FF',
+      fillColor: '#239B56',
       fillOpacity: 1
     });
 
@@ -962,13 +962,13 @@
     educationBuildingPlygon.setMap(map);
     parkingPolygon.setMap(map);
 
-    // var addListenersOnPolygon = function(polygon) {
-    //   google.maps.event.addListener(polygon, 'mouseover', function (event) {
-    //     alert("polygon")
-    //   });
-    // }
+    var addListenersOnPolygon = function(polygon) {
+      google.maps.event.addListener(polygon, 'mouseover', function (event) {
+//        alert("polygon")
+      });
+    }
 
-    addListenersOnPolygon(educationBuildingPlygon);
+   addListenersOnPolygon(educationBuildingPlygon);
 
     function initMap() { // displays map on page, sets up variables for the directions service for use later
         var travellingMode = "WALKING";
