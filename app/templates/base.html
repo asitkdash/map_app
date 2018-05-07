@@ -6,7 +6,7 @@
     <title>Titan Map App</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/snazzy-info-window.min.css') }}">
-    
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -35,14 +35,14 @@
 
 <body>
 
-	<div class="ui attached four item inverted menu" id="navbar">
+	<div class="ui attached three item inverted menu" id="navbar">
 		<a class="ui item" href="/">Home</a>
 		<a class="ui item" href="/map">Map</a>
 		<a class="ui item" href="/contact" class="item" id="team"><i class="phone icon"></i>Meet The Team</a>
-		<div class="right menu">
+		<!-- <div class="right menu">
 		    <div class="ui blue left tiny attached button signupmodal" id="signupbutton">Sign up</div>
 		    <div class="ui blue right tiny attached button loginmodal" id="loginbutton"><i class="white signup icon"></i>Login</div></a>
-		</div>
+		</div> -->
 	</div>
 
 	{% block bar %}{% endblock %}
