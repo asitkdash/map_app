@@ -3,13 +3,13 @@
 {% block bar %}
     <div class="ui blue inverted attached secondary menu" id="topbar">
         <button class="ui icon button" id="left-sidebar-toggle">
-          <i class="blue align justify icon"></i>
+          <i class="sidebar icon"></i>
         </button>
 
         <a class="item" id="offline-map">
         <i class="teal map icon"></i>Offline Map/Legend</a>
 
-        <div class="ui blue floating labeled icon dropdown button">
+        <div class="ui blue floating labeled icon dropdown button" id="startMenu">
           <i class="map marker alternative icon"></i>
           <span class="text" id="start">Current Location</span>
           <div class="menu">
@@ -58,7 +58,7 @@
     </div>
 
 <div id="sidemenu">
-    <div class="ui left vertical menu sidebar" id="left-sidebar">
+    <div class="ui left vertical menu sidebar map" id="left-sidebar">
 
     <h2 class="ui center aligned header" id="header1">
       <img src="{{ url_for('static', filename='img/asktuffy2.png') }}" class="ui circular image">
@@ -74,172 +74,248 @@
               <input type="checkbox" name="example">
               <label> Education Buildings </label>
           </div>
-      <div class="menu" style="overflow:auto;max-height:289px;">
-          <div class="header">Education Building list in CSUF</div>
+      <div class="menu sub">
+          <div class="header" style="min-width: 600px">Education Building list in CSUF</div>
 
-          <div class="ui buttons" id="CC">
-              <button class="ui button ebuildings marker" id="CC-btn" value="{{ getCoords('CC') }}" type="button"><i class="teal book icon"></i>Children's Center</button>
+          <div class="ui two large attached buttons" id="CC">
+              <button class="ui button marker ebuildings" id="CC-btn" value="{{ getCoords('CC') }}" type="button"><i class="teal book icon"></i>Children's Center</button>
               <div class="or"></div>
               <button class="ui positive button" id="CC-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="CS">
+          <div class="ui two large attached buttons" id="CS">
               <button class="ui button ebuildings marker" id="CS-btn" value="{{ getCoords('CS') }}" type="button"><i class="teal book icon"></i>Computer Science</button>
               <div class="or"></div>
               <button class="ui positive button" id="CS-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="CPAC">
+          <div class="ui two large attached buttons" id="CPAC">
               <button class="ui button ebuildings marker" id="CPAC-btn" value="{{ getCoords('CPAC') }}" type="button"><i class="teal book icon"></i>Clayes Performing Arts Center</button>
               <div class="or"></div>
               <button class="ui positive button" id="CPAC-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="DBH">
+          <div class="ui two large attached buttons" id="DBH">
               <button class="ui button ebuildings marker" id="DBH-btn" value="{{ getCoords('DBH') }}" type="button"><i class="teal book icon"></i>Dan Black Hall </button>
               <div class="or"></div>
               <button class="ui positive button" id="DBH-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="EC">
+          <div class="ui two large attached buttons" id="EC">
               <button class="ui button ebuildings marker" id="EC-btn" value="{{ getCoords('EC') }}" type="button"><i class="teal book icon"></i>Education Classroom </button>
               <div class="or"></div>
               <button class="ui positive button" id="EC-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="E">
+          <div class="ui two large attached buttons" id="E">
               <button class="ui button ebuildings marker" id="E-btn" value="{{ getCoords('E') }}" type="button"><i class="teal book icon"></i>Engineering </button>
               <div class="or"></div>
               <button class="ui positive button" id="E-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="H">
+          <div class="ui two large attached buttons" id="H">
               <button class="ui button ebuildings marker" id="H-btn" value="{{ getCoords('H') }}" type="button"><i class="teal book icon"></i>Humanities & Social Science</button>
               <div class="or"></div>
               <button class="ui positive button" id="H-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="KHS">
+          <div class="ui two large attached buttons" id="KHS">
               <button class="ui button ebuildings marker" id="KHS-btn" value="{{ getCoords('KHS') }}" type="button"><i class="teal book icon"></i>Kinesiology & Health Science</button>
               <div class="or"></div>
               <button class="ui positive button" id="KHS-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="LH">
+          <div class="ui two large attached buttons" id="LH">
               <button class="ui button ebuildings marker" id="LH-btn" value="{{ getCoords('LH') }}" type="button"><i class="teal book icon"></i>Langsdorf Hall </button>
               <div class="or"></div>
               <button class="ui positive button" id="LH-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="MH">
+          <div class="ui two large attached buttons" id="MH">
               <button class="ui button ebuildings marker" id="MH-btn" value="{{ getCoords('MH') }}" type="button"><i class="teal book icon"></i>Mc Carthy Hall </button>
               <div class="or"></div>
               <button class="ui positive button" id="MH-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="PL">
+          <div class="ui two large attached buttons" id="PL">
               <button class="ui button ebuildings marker" id="PL-btn" value="{{ getCoords('PL') }}" type="button"><i class="teal book icon"></i>Pollack Library </button>
               <div class="or"></div>
               <button class="ui positive button" id="PL-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="PLS">
+          <div class="ui two large attached buttons" id="PLS">
               <button class="ui button ebuildings marker" id="PLS-btn" value="{{ getCoords('PLS') }}" type="button"><i class="teal book icon"></i>Pollack Library South </button>
               <div class="or"></div>
               <button class="ui positive button" id="PLS-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="RGC">
+          <div class="ui two large attached buttons" id="RGC">
               <button class="ui button ebuildings marker" id="RGC-btn" value="{{ getCoords('RGC') }}" type="button"><i class="teal book icon"></i>Ruby Gerontology Center </button>
               <div class="or"></div>
               <button class="ui positive button" id="RGC-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="SGMH">
+          <div class="ui two large attached buttons" id="SGMH">
               <button class="ui button ebuildings marker" id="SGMH-btn" value="{{ getCoords('SGMH') }}" type="button"><i class="teal book icon"></i>Steven G. Mihalyo</button>
               <div class="or"></div>
               <button class="ui positive button" id="SGMH-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="UH">
+          <div class="ui two large attached buttons" id="UH">
               <button class="ui button ebuildings marker" id="UH-btn" value="{{ getCoords('UH') }}" type="button"><i class="teal book icon"></i>University Hall </button>
               <div class="or"></div>
               <button class="ui positive button" id="UH-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="VA">
+          <div class="ui two large attached buttons" id="VA">
               <button class="ui button ebuildings marker" id="VA-btn" value="{{ getCoords('VA') }}" type="button"><i class="teal book icon"></i>Visual Arts </button>
               <div class="or"></div>
               <button class="ui positive button" id="VA-direction">Direction</button>
           </div>
-
       </div>
   </div>
 
+  <div class="ui simple dropdown item">
+      <i class="teal database icon"></i>
+      <div class="ui checkbox ddbuildings">
+              <input type="checkbox" name="example">
+              <label> Departments </label>
+          </div>
+      <div class="menu sub">
+          <div class="header" style="min-width: 600px">Departments in CSUF</div>
+
+          <div class="ui two large attached buttons" id="ANTH">
+              <button class="ui button ddbuildings marker" id="ANTH-btn" value="{{ getCoords('ANTH') }}" type="button"><i class="teal database icon"></i>Anthropology</button>
+              <div class="or"></div>
+              <button class="ui positive button" id="ANTH-direction">Direction</button>
+          </div>
+
+          <div class="ui two large attached buttons" id="BS">
+              <button class="ui button ddbuildings marker" id="BS-btn" value="{{ getCoords('BS') }}" type="button"><i class="teal database icon"></i>Biological Science</button>
+              <div class="or"></div>
+              <button class="ui positive button" id="BS-direction">Direction</button>
+          </div>
+
+          <div class="ui two large attached buttons" id="CH">
+              <button class="ui button ddbuildings marker" id="CH-btn" value="{{ getCoords('CH') }}" type="button"><i class="teal database icon"></i>Chemistry & Bio-Chemistry</button>
+              <div class="or"></div>
+              <button class="ui positive button" id="CH-direction">Direction</button>
+          </div>
+
+          <div class="ui two large attached buttons" id="GEOG">
+              <button class="ui button ddbuildings marker" id="GEOG-btn" value="{{ getCoords('GEOG') }}" type="button"><i class="teal database icon"></i>Geography</button>
+              <div class="or"></div>
+              <button class="ui positive button" id="GEOG-direction">Direction</button>
+          </div>
+
+          <div class="ui two large attached buttons" id="GS">
+              <button class="ui button ddbuildings marker" id="GS-btn" value="{{ getCoords('GS') }}" type="button"><i class="teal database icon"></i>Geological Sciences</button>
+              <div class="or"></div>
+              <button class="ui positive button" id="GS-direction">Direction</button>
+          </div>
+
+          <div class="ui two large attached buttons" id="HIST">
+              <button class="ui button ddbuildings marker" id="HIST-btn" value="{{ getCoords('HIST') }}" type="button"><i class="teal database icon"></i>History</button>
+              <div class="or"></div>
+              <button class="ui positive button" id="HIST-direction">Direction</button>
+          </div>
+
+          <div class="ui two large attached buttons" id="MA">
+              <button class="ui button ddbuildings marker" id="MA-btn" value="{{ getCoords('MA') }}" type="button"><i class="teal database icon"></i>Mathematics</button>
+              <div class="or"></div>
+              <button class="ui positive button" id="MA-direction">Direction</button>
+          </div>
+
+          <div class="ui two large attached buttons" id="PHIL">
+              <button class="ui button ddbuildings marker" id="PHIL-btn" value="{{ getCoords('PHIL') }}" type="button"><i class="teal database icon"></i>Philosophy</button>
+              <div class="or"></div>
+              <button class="ui positive button" id="PHIL-direction">Direction</button>
+          </div>
+
+          <div class="ui two large attached buttons" id="PHY">
+              <button class="ui button ddbuildings marker" id="PHY-btn" value="{{ getCoords('PHY') }}" type="button"><i class="teal database icon"></i>Physics</button>
+              <div class="or"></div>
+              <button class="ui positive button" id="PHY-direction">Direction</button>
+          </div>
+
+          <div class="ui two large attached buttons" id="PSYC">
+              <button class="ui button ddbuildings marker" id="PSYC-btn" value="{{ getCoords('PSYC') }}" type="button"><i class="teal database icon"></i>Psychology</button>
+              <div class="or"></div>
+              <button class="ui positive button" id="PSYC-direction">Direction</button>
+          </div>
+
+          <div class="ui two large attached buttons" id="SOCI">
+              <button class="ui button ddbuildings marker" id="SOCI-btn" value="{{ getCoords('SOCI') }}" type="button"><i class="teal database icon"></i>Sociology</button>
+              <div class="or"></div>
+              <button class="ui positive button" id="SOCI-direction">Direction</button>
+          </div>
+      </div>
+  </div>
+<!-- Added -->
   <div class="ui simple dropdown item">
       <i class="teal users icon"></i>
       <div class="ui checkbox fdbuildings">
               <input type="checkbox" name="example">
               <label> Food & Dining </label>
           </div>
-      <div class="menu"  style="overflow:auto;max-height:215px;">
-          <div class="header">Places to eat in CSUF</div>
+      <div class="menu sub">
+          <div class="header" style="min-width: 600px">Places to eat in CSUF</div>
 
-          <div class="ui buttons" id="BE">
+          <div class="ui two large attached buttons" id="BE">
               <button class="ui button fdbuildings marker" id="BE-btn" value="{{ getCoords('BE') }}" type="button"><i class="teal users icon"></i>Baja Fresh(TSU)</button>
               <div class="or"></div>
               <button class="ui positive button" id="BE-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="CJ">
+          <div class="ui two large attached buttons" id="CJ">
               <button class="ui button fdbuildings marker" id="CJ-btn" value="{{ getCoords('CJ') }}" type="button"><i class="teal users icon"></i>Carl's Jr</button>
               <div class="or"></div>
               <button class="ui positive button" id="CJ-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="GA">
+          <div class="ui two large attached buttons" id="GA">
               <button class="ui button fdbuildings marker" id="GA-btn" value="{{ getCoords('GA') }}" type="button"><i class="teal users icon"></i>Gastronome</button>
               <div class="or"></div>
               <button class="ui positive button" id="GA-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="JU">
+          <div class="ui two large attached buttons" id="JU">
               <button class="ui button fdbuildings marker" id="JU-btn" value="{{ getCoords('JU') }}" type="button"><i class="teal users icon"></i>Juice it Up(TSU)</button>
               <div class="or"></div>
               <button class="ui positive button" id="JU-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="PEX">
+          <div class="ui two large attached buttons" id="PEX">
               <button class="ui button fdbuildings marker" id="PEX-btn" value="{{ getCoords('PEX') }}" type="button"><i class="teal users icon"></i>Panda Express(TSU)</button>
               <div class="or"></div>
               <button class="ui positive button" id="PEX-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="MST">
+          <div class="ui two large attached buttons" id="MST">
               <button class="ui button fdbuildings marker" id="MST-btn" value="{{ getCoords('MST') }}" type="button"><i class="teal coffee icon"></i>Starbucks(Mihalyo)</button>
               <div class="or"></div>
               <button class="ui positive button" id="MST-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="PLST">
+          <div class="ui two large attached buttons" id="PLST">
               <button class="ui button fdbuildings marker" id="PLST-btn" value="{{ getCoords('PLST') }}" type="button"><i class="teal coffee icon"></i>Starbucks(PL)</button>
               <div class="or"></div>
               <button class="ui positive button" id="PLST-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="TSUST">
+          <div class="ui two large attached buttons" id="TSUST">
               <button class="ui button fdbuildings marker" id="TSUST-btn" value="{{ getCoords('TSUST') }}" type="button"><i class="teal coffee icon"></i>Starbucks(TSU)</button>
               <div class="or"></div>
               <button class="ui positive button" id="TSUST-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="CPT">
+          <div class="ui two large attached buttons" id="CPT">
               <button class="ui button fdbuildings marker" id="CPT-btn" value="{{ getCoords('CPT') }}" type="button"><i class="teal users icon"></i>Togo Sandwich(College Park)</button>
               <div class="or"></div>
               <button class="ui positive button" id="CPT-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="TSUT">
+          <div class="ui two large attached buttons" id="TSUT">
               <button class="ui button fdbuildings marker" id="TSUT-btn" value="{{ getCoords('TSUT') }}" type="button"><i class="teal users icon"></i>Togo Sandwich(TSU)</button>
               <div class="or"></div>
               <button class="ui positive button" id="TSUT-direction">Direction</button>
@@ -253,28 +329,28 @@
               <input type="checkbox" name="example">
               <label> ATM & Bank </label>
           </div>
-      <div class="menu">
-          <div class="header">ATM located in CSUF</div>
+      <div class="menu sub">
+          <div class="header" style="min-width: 600px">ATM located in CSUF</div>
 
-          <div class="ui buttons" id="BOFA">
+          <div class="ui two large attached buttons" id="BOFA">
               <button class="ui button bbuildings marker" id="BOFA-btn" value="{{ getCoords('BOFA') }}" type="button"><i class="teal credit card icon"></i>BoFA Bank ATM</button>
               <div class="or"></div>
               <button class="ui positive button" id="BOFA-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="CATM">
+          <div class="ui two large attached buttons" id="CATM">
               <button class="ui button bbuildings marker" id="CATM-btn" value="{{ getCoords('CATM') }}" type="button"><i class="teal credit card icon"></i>Chase Bank ATM</button>
               <div class="or"></div>
               <button class="ui positive button" id="CATM-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="WATM">
+          <div class="ui two large attached buttons" id="WATM">
               <button class="ui button bbuildings marker" id="WATM-btn" value="{{ getCoords('WATM') }}" type="button"><i class="teal credit card icon"></i>Wells Fargo Bank ATM</button>
               <div class="or"></div>
               <button class="ui positive button" id="WATM-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="USB">
+          <div class="ui two large attached buttons" id="USB">
               <button class="ui button bbuildings marker" id="USB-btn" value="{{ getCoords('USB') }}" type="button"><i class="teal credit card icon"></i>US Bank Branch(Titan Shop)</button>
               <div class="or"></div>
               <button class="ui positive button" id="USB-direction">Direction</button>
@@ -289,27 +365,27 @@
               <label> Landmarks </label>
           </div>
       <div class="menu">
-          <div class="header">Important Landmarks for Events</div>
+          <div class="header" style="min-width: 600px">Important Landmarks for Events</div>
 
-          <div class="ui buttons" id="BA">
+          <div class="ui two large attached buttons" id="BA">
               <button class="ui button lm marker" id="BA-btn" value="{{ getCoords('BA') }}" type="button"><i class="teal magnet icon"></i>Becker Amphitheater</button>
               <div class="or"></div>
               <button class="ui positive button" id="BA-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="ECSQ">
+          <div class="ui two large attached buttons" id="ECSQ">
               <button class="ui button lm marker" id="ECSQ-btn" value="{{ getCoords('ECSQ') }}" type="button"><i class="teal magnet icon"></i>ECS QUAD</button>
               <div class="or"></div>
               <button class="ui positive button" id="ECSQ-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="Q">
+          <div class="ui two large attached buttons" id="Q">
               <button class="ui button lm marker" id="Q-btn" value="{{ getCoords('Q') }}" type="button"><i class="teal magnet icon"></i>QUAD</button>
               <div class="or"></div>
               <button class="ui positive button" id="Q-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="TW">
+          <div class="ui two large attached buttons" id="TW">
               <button class="ui button lm marker" id="TW-btn" value="{{ getCoords('TW') }}" type="button"><i class="teal magnet icon"></i>Titan Walk</button>
               <div class="or"></div>
               <button class="ui positive button" id="TW-direction">Direction</button>
@@ -323,22 +399,22 @@
               <input type="checkbox" name="example">
               <label> Facilities </label>
           </div>
-      <div class="menu">
-          <div class="header">Facilities provided by CSUF</div>
+      <div class="menu sub">
+          <div class="header" style="min-width: 600px">Facilities provided by CSUF</div>
 
-          <div class="ui buttons" id="EHS">
+          <div class="ui two large attached buttons" id="EHS">
               <button class="ui button fbuildings marker" id="EHS-btn" value="{{ getCoords('EHS') }}" type="button"><i class="teal recycle icon"></i>Environment Health & Safety</button>
               <div class="or"></div>
               <button class="ui positive button" id="EHS-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="P">
+          <div class="ui two large attached buttons" id="P">
               <button class="ui button fbuildings marker" id="P-btn" value="{{ getCoords('P') }}" type="button"><i class="teal recycle icon"></i>Parking & Transportation Office</button>
               <div class="or"></div>
               <button class="ui positive button" id="P-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="TRI">
+          <div class="ui two large attached buttons" id="TRI">
               <button class="ui button fbuildings marker" id="TRI-btn" value="{{ getCoords('TRI') }}" type="button"><i class="teal recycle icon"></i>Trigen</button>
               <div class="or"></div>
               <button class="ui positive button" id="TRI-direction">Direction</button>
@@ -352,112 +428,112 @@
               <input type="checkbox" name="example">
               <label> Parking Structures   </label>
           </div>
-          <div class="menu" style="overflow:auto;max-height:289px;">
-              <div class="header">Parking including students and faculties in CSUF</div>
+          <div class="menu sub">
+              <div class="header" style="min-width: 600px">Parking including students and faculties in CSUF</div>
 
-              <div class="ui buttons" id="PA">
+              <div class="ui two large attached buttons" id="PA">
                   <button class="ui button pbuildings marker" id="PA-btn" value="{{ getCoords('PA') }}" type="button"><i class="teal car icon"></i>Parking Lot A</button>
                   <div class="or"></div>
                   <button class="ui positive button" id="PA-direction">Direction</button>
               </div>
 
-              <div class="ui buttons" id="PAS">
+              <div class="ui two large attached buttons" id="PAS">
                   <button class="ui button pbuildings marker" id="PAS-btn" value="{{ getCoords('PAS') }}" type="button"><i class="teal car icon"></i>Parking Lot A - South</button>
                   <div class="or"></div>
                   <button class="ui positive button" id="PAS-direction">Direction</button>
               </div>
 
-              <div class="ui buttons" id="PC">
+              <div class="ui two large attached buttons" id="PC">
                   <button class="ui button pbuildings marker" id="PC-btn" value="{{ getCoords('PC') }}" type="button"><i class="teal car icon"></i>Parking Lot C</button>
                   <div class="or"></div>
                   <button class="ui positive button" id="PC-direction">Direction</button>
               </div>
 
-              <div class="ui buttons" id="PCE">
+              <div class="ui two large attached buttons" id="PCE">
                   <button class="ui button pbuildings marker" id="PCE-btn" value="{{ getCoords('PCE') }}" type="button"><i class="teal car icon"></i>Parking Lot C - East</button>
                   <div class="or"></div>
                   <button class="ui positive button" id="PCE-direction">Direction</button>
               </div>
 
-              <div class="ui buttons" id="PCW">
+              <div class="ui two large attached buttons" id="PCW">
                   <button class="ui button pbuildings marker" id="PCW-btn" value="{{ getCoords('PCW') }}" type="button"><i class="teal car icon"></i>Parking Lot C - West</button>
                   <div class="or"></div>
                   <button class="ui positive button" id="PCW-direction">Direction</button>
               </div>
 
-              <div class="ui buttons" id="PE">
+              <div class="ui two large attached buttons" id="PE">
                   <button class="ui button pbuildings marker" id="PE-btn" value="{{ getCoords('PE') }}" type="button"><i class="teal car icon"></i>Parking Lot E</button>
                   <div class="or"></div>
                   <button class="ui positive button" id="PE-direction">Direction</button>
               </div>
 
-              <div class="ui buttons" id="PF">
+              <div class="ui two large attached buttons" id="PF">
                   <button class="ui button pbuildings marker" id="PF-btn" value="{{ getCoords('PF') }}" type="button"><i class="teal car icon"></i>Parking Lot F</button>
                   <div class="or"></div>
                   <button class="ui positive button" id="PF-direction">Direction</button>
               </div>
 
-              <div class="ui buttons" id="PG">
+              <div class="ui two large attached buttons" id="PG">
                   <button class="ui button pbuildings marker" id="PG-btn" value="{{ getCoords('PG') }}" type="button"><i class="teal car icon"></i>Parking Lot G</button>
                   <div class="or"></div>
                   <button class="ui positive button" id="PG-direction">Direction</button>
               </div>
 
-              <div class="ui buttons" id="PH">
+              <div class="ui two large attached buttons" id="PH">
                   <button class="ui button pbuildings marker" id="PH-btn" value="{{ getCoords('PH') }}" type="button"><i class="teal car icon"></i>Parking Lot H</button>
                   <div class="or"></div>
                   <button class="ui positive button" id="PH-direction">Direction</button>
               </div>
 
-              <div class="ui buttons" id="PI">
+              <div class="ui two large attached buttons" id="PI">
                   <button class="ui button pbuildings marker" id="PI-btn" value="{{ getCoords('PI') }}" type="button"><i class="teal car icon"></i>Parking Lot I</button>
                   <div class="or"></div>
                   <button class="ui positive button" id="PI-direction">Direction</button>
               </div>
 
-              <div class="ui buttons" id="PR">
+              <div class="ui two large attached buttons" id="PR">
                   <button class="ui button pbuildings marker" id="PR-btn" value="{{ getCoords('PR') }}" type="button"><i class="teal car icon"></i>Parking Lot R</button>
                   <div class="or"></div>
                   <button class="ui positive button" id="PR-direction">Direction</button>
               </div>
 
-              <div class="ui buttons" id="PS">
+              <div class="ui two large attached buttons" id="PS">
                   <button class="ui button pbuildings marker" id="PS-btn" value="{{ getCoords('PS') }}" type="button"><i class="teal car icon"></i>Parking Lot S</button>
                   <div class="or"></div>
                   <button class="ui positive button" id="PS-direction">Direction</button>
               </div>
 
-              <div class="ui buttons" id="AP">
+              <div class="ui two large attached buttons" id="AP">
                   <button class="ui button pbuildings marker" id="AP-btn" value="{{ getCoords('AP') }}" type="button"><i class="teal car icon"></i>Arboritum Parking</button>
                   <div class="or"></div>
                   <button class="ui positive button" id="AP-direction">Direction</button>
               </div>
 
-              <div class="ui buttons" id="CPFSP">
+              <div class="ui two large attached buttons" id="CPFSP">
                   <button class="ui button pbuildings marker" id="CPFSP-btn" value="{{ getCoords('CPFSP') }}" type="button"><i class="teal car icon"></i>CPFS Parking</button>
                   <div class="or"></div>
                   <button class="ui positive button" id="CPFSP-direction">Direction</button>
               </div>
 
-              <div class="ui buttons" id="DDP">
+              <div class="ui two large attached buttons" id="DDP">
                   <button class="ui button pbuildings marker" id="DDP-btn" value="{{ getCoords('DDP') }}" type="button"><i class="teal car icon"></i>Dumbo Down Parking</button>
                   <div class="or"></div>
                   <button class="ui positive button" id="DDP-direction">Direction</button>
               </div>
 
-              <div class="ui buttons" id="EPS">
+              <div class="ui two large attached buttons" id="EPS">
                   <button class="ui button pbuildings marker" id="EPS-btn" value="{{ getCoords('EPS') }}" type="button"><i class="teal car icon"></i>East Side Structure Parking</button>
                   <div class="or"></div>
                   <button class="ui positive button" id="EPS-direction">Direction</button>
               </div>
 
-              <div class="ui buttons" id="NPS">
+              <div class="ui two large attached buttons" id="NPS">
                   <button class="ui button pbuildings marker" id="NPS-btn" value="{{ getCoords('NPS') }}" type="button"><i class="teal car icon"></i>Nutwood Structure Parking</button>
                   <div class="or"></div>
                   <button class="ui positive button" id="NPS-direction">Direction</button>
               </div>
 
-              <div class="ui buttons" id="SCPS">
+              <div class="ui two large attached buttons" id="SCPS">
                   <button class="ui button pbuildings marker" id="SCPS-btn" value="{{ getCoords('SCPS') }}" type="button"><i class="teal car icon"></i>State College Structure Parking</button>
                   <div class="or"></div>
                   <button class="ui positive button" id="SCPS-direction">Direction</button>
@@ -471,28 +547,28 @@
               <input type="checkbox" name="example">
               <label> Corporation Yard </label>
           </div>
-      <div class="menu">
-          <div class="header"><a href="#">Corporation Yard</a></div>
+      <div class="menu sub">
+          <div class="header" style="min-width: 600px"><a href="#">Corporation Yard</a></div>
 
-          <div class="ui buttons" id="AS">
+          <div class="ui two large attached buttons" id="AS">
               <button class="ui button cy marker" id="AS-btn" value="{{ getCoords('AS') }}" type="button"><i class="teal search icon"></i>Automobile Shop</button>
               <div class="or"></div>
               <button class="ui positive button" id="AS-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="CSH">
+          <div class="ui two large attached buttons" id="CSH">
               <button class="ui button cy marker" id="CSH-btn" value="{{ getCoords('CSH') }}" type="button"><i class="teal search icon"></i>Carpenter Shop</button>
               <div class="or"></div>
               <button class="ui positive button" id="CSH-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="MC">
+          <div class="ui two large attached buttons" id="MC">
               <button class="ui button cy marker" id="MC-btn" value="{{ getCoords('MC') }}" type="button"><i class="teal search icon"></i>Mailing Center</button>
               <div class="or"></div>
               <button class="ui positive button" id="MC-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="SR">
+          <div class="ui two large attached buttons" id="SR">
               <button class="ui button cy marker" id="SR-btn" value="{{ getCoords('SR') }}" type="button"><i class="teal search icon"></i>Shipping & Recieving</button>
               <div class="or"></div>
               <button class="ui positive button" id="SR-direction">Direction</button>
@@ -506,16 +582,16 @@
               <input type="checkbox" name="example">
               <label> Administrative Building </label>
           </div>
-      <div class="menu">
-          <div class="header">Located outside of CSUF campus</div>
+      <div class="menu sub">
+          <div class="header" style="min-width: 600px">Located outside of CSUF campus</div>
 
-          <div class="ui buttons" id="CP">
+          <div class="ui two large attached buttons" id="CP">
               <button class="ui button abuildings marker" id="CP-btn" value="{{ getCoords('CP') }}" type="button"><i class="teal laptop icon"></i>College Park</button>
               <div class="or"></div>
               <button class="ui positive button" id="CP-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="CPW">
+          <div class="ui two large attached buttons" id="CPW">
               <button class="ui button abuildings marker" id="CPW-btn" value="{{ getCoords('CPW') }}" type="button"><i class="teal laptop icon"></i>College Park - West</button>
               <div class="or"></div>
               <button class="ui positive button" id="CPW-direction">Direction</button>
@@ -529,34 +605,34 @@
               <input type="checkbox" name="example">
               <label> Student Services </label>
           </div>
-      <div class="menu">
-          <div class="header">Student services in CSUF</div>
+      <div class="menu sub">
+          <div class="header" style="min-width: 600px">Student services in CSUF</div>
 
-          <div class="ui buttons" id="ARSC">
-              <button class="ui button ssbuildings marker" id="ARSC-btn" value="{{ getCoords('ARSC') }}" type="button"><i class="teal thumbs up icon"></i>Admission and Records Service Center</button>
+          <div class="ui two large attached buttons" id="ARSC">
+              <button class="ui button ssbuildings marker" id="ARSC-btn" value="{{ getCoords('ARSC') }}" type="button"><i class="teal thumbs up icon"></i>Office of Admissions</button>
               <div class="or"></div>
               <button class="ui positive button" id="ARSC-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="CRC">
+          <div class="ui two large attached buttons" id="CRC">
               <button class="ui button ssbuildings marker" id="CRC-btn" value="{{ getCoords('CRC') }}" type="button"><i class="teal thumbs up icon"></i>Career Center</button>
               <div class="or"></div>
               <button class="ui positive button" id="CRC-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="RH">
+          <div class="ui two large attached buttons" id="RH">
               <button class="ui button ssbuildings marker" id="RH-btn" value="{{ getCoords('RH') }}" type="button"><i class="teal thumbs up icon"></i>Resident Hall</button>
               <div class="or"></div>
               <button class="ui positive button" id="RH-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="SH">
+          <div class="ui two large attached buttons" id="SH">
               <button class="ui button ssbuildings marker" id="SH-btn" value="{{ getCoords('SH') }}" type="button"><i class="teal thumbs up icon"></i>Student Housing</button>
               <div class="or"></div>
               <button class="ui positive button" id="SH-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="SRC">
+          <div class="ui two large attached buttons" id="SRC">
               <button class="ui button ssbuildings marker" id="SRC-btn" value="{{ getCoords('SRC') }}" type="button"><i class="teal thumbs up icon"></i>Student Recreation Center</button>
               <div class="or"></div>
               <button class="ui positive button" id="SRC-direction">Direction</button>
@@ -571,40 +647,40 @@
               <label> Titan Pride </label>
           </div>
       <div class="ui teal left pointing label">pride</div>
-      <div class="menu">
-          <div class="header">Pride of Titans</div>
+      <div class="menu sub">
+          <div class="header" style="min-width: 600px">Pride of Titans</div>
 
-          <div class="ui buttons" id="G">
+          <div class="ui two large attached buttons" id="G">
               <button class="ui button tbuildings marker" id="G-btn" value="{{ getCoords('G') }}" type="button"><i class="teal spinner icon"></i>Golleher Alumini House</button>
               <div class="or"></div>
               <button class="ui positive button" id="G-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="TG">
+          <div class="ui two large attached buttons" id="TG">
               <button class="ui button tbuildings marker" id="TG-btn" value="{{ getCoords('TG') }}" type="button"><i class="teal spinner icon"></i>Titan Gymnasium </button>
               <div class="or"></div>
               <button class="ui positive button" id="TG-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="TH">
+          <div class="ui two large attached buttons" id="TH">
               <button class="ui button tbuildings marker" id="TH-btn" value="{{ getCoords('TH') }}" type="button"><i class="teal spinner icon"></i>Titan House</button>
               <div class="or"></div>
               <button class="ui positive button" id="TH-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="TROTC">
+          <div class="ui two large attached buttons" id="TROTC">
               <button class="ui button tbuildings marker" id="TROTC-btn" value="{{ getCoords('TROTC') }}" type="button"><i class="teal spinner icon"></i>Titan ROTC</button>
               <div class="or"></div>
               <button class="ui positive button" id="TROTC-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="TSH">
+          <div class="ui two large attached buttons" id="TSH">
               <button class="ui button tbuildings marker" id="TSH-btn" value="{{ getCoords('TSH') }}" type="button"><i class="teal spinner icon"></i>Titan Shop</button>
               <div class="or"></div>
               <button class="ui positive button" id="TSH-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="TSU">
+          <div class="ui two large attached buttons" id="TSU">
               <button class="ui button tbuildings marker" id="TSU-btn" value="{{ getCoords('TSU') }}" type="button"><i class="teal spinner icon"></i>Titan Student Union(TSU)</button>
               <div class="or"></div>
               <button class="ui positive button" id="TSU-direction">Direction</button>
@@ -618,22 +694,22 @@
               <input type="checkbox" name="example">
               <label> Titan Sports Complex </label>
           </div>
-      <div class="menu">
-          <div class="header">Athelatics Stadiums</div>
+      <div class="menu sub">
+          <div class="header" style="min-width: 600px">Athelatics Stadiums</div>
 
-          <div class="ui buttons" id="TS">
+          <div class="ui two large attached buttons" id="TS">
               <button class="ui button sbuildings marker" id="TS-btn" value="{{ getCoords('TS') }}" type="button"><i class="teal spinner icon"></i>Titan Stadium</button>
               <div class="or"></div>
               <button class="ui positive button" id="TS-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="GF">
+          <div class="ui two large attached buttons" id="GF">
               <button class="ui button sbuildings marker" id="GF-btn" value="{{ getCoords('GF') }}" type="button"><i class="teal spinner icon"></i>Goodwin Field</button>
               <div class="or"></div>
               <button class="ui positive button" id="GF-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="AF">
+          <div class="ui two large attached buttons" id="AF">
               <button class="ui button sbuildings marker" id="AF-btn" value="{{ getCoords('AF') }}" type="button"><i class="teal spinner icon"></i>Anderson Field</button>
               <div class="or"></div>
               <button class="ui positive button" id="AF-direction">Direction</button>
@@ -647,16 +723,16 @@
               <input type="checkbox" name="example">
               <label> Emergency </label>
           </div>
-      <div class="menu">
-          <div class="header">CSUF Emergency buildings</div>
+      <div class="menu sub">
+          <div class="header" style="min-width: 600px">CSUF Emergency buildings</div>
 
-          <div class="ui buttons" id="SHCC">
-              <button class="ui button embuildings marker" id="SHCC-btn" value="{{ getCoords('SHCC') }}" type="button"><i class="teal user doctor icon"></i>Student Health & Counseling Center</button>
+          <div class="ui two large attached buttons" id="SHCC">
+              <button class="ui button embuildings marker" id="SHCC-btn" value="{{ getCoords('SHCC') }}" type="button"><i class="teal user doctor icon"></i>Health Services</button>
               <div class="or"></div>
               <button class="ui positive button" id="SHCC-direction">Direction</button>
           </div>
 
-          <div class="ui buttons" id="UP">
+          <div class="ui two large attached buttons" id="UP">
               <button class="ui button embuildings marker" id="UP-btn" value="{{ getCoords('UP') }}" type="button"><i class="teal plus icon"></i>University Police</button>
               <div class="or"></div>
               <button class="ui positive button" id="UP-direction">Direction</button>
@@ -680,14 +756,18 @@
           <div class="ui vertical divider"></div>
            <div class="column">
              <p>
+              <p><i class="teal database icon"></i><strong>Departments</strong></p><p>ANTH - Anthropology</p><p>BS - Biological Science</p><p> CH - Chemistry & Bio-Chemistry</p><p> GEOG - Geography</p><p>GS - Geological Sciences</p><p> HIST - History</p><p> MA - Mathematics </p><p> PHIL - Philosophy</p><p> PHY -  Physics</p><p> PSYC - Psychology</p>
+              <p> SOCI - Sociology </p>     
+              <div class="ui fitted divider"></div>
+              <div class="ui fitted divider"></div>
               <p><i class="teal users icon"></i><strong>Food & Dining</strong><br></p><p>BE - Baja Fresh</p> <p> CJ - Carl's Jr</p> <p> GA - Gastronome</p> <p> JU - Juice It Up</p> <p> PEX - Panda Express</p> <p>MST - Mihaylo Starbucks </p> <p>PLST - Pollak Library Starbucks</p> <p> TSUST - TSU Starbucks</p> <p>CPT - College Park Togos</p> <p> TSUT - TSU Togos</p>
-             <div class="ui fitted divider"></div>
-             <div class="ui fitted divider"></div>
-             <p><i class="teal credit card icon"></i><strong>ATM & Bank</strong><br></p><p>BOFA - BOFA Bank ATM</p><p>CATM - Chase ATM</p><p>WATM - Wells Fargo ATM</p><p>USB - US Bank Branch</p>
            </p>
            </div>
            <div class="column">
              <p>
+               <p><i class="teal credit card icon"></i><strong>ATM & Bank</strong><br></p><p>BOFA - BOFA Bank ATM</p><p>CATM - Chase ATM</p><p>WATM - Wells Fargo ATM</p><p>USB - US Bank Branch</p>
+               <div class="ui fitted divider"></div>
+               <div class="ui fitted divider"></div>
                <p><i class="teal magnet icon"></i><strong>Landmarks</strong><br></p><p>BA - Becker Amphitheater</p> <p> ECSQ - ECS Quad</p> <p> Q - Quad</p> <p> TW - Titan Walk</p>
                <div class="ui fitted divider"></div>
                <div class="ui fitted divider"></div>
@@ -738,9 +818,8 @@
 {% endblock %}
 
 {% block content %}
-
-{% block display %}{% endblock %}
-    <div id="map"></div>
+  {% block display %}{% endblock %}
+  <div id="map"></div>
 {% endblock %}
 
 {% block mapscript %}
@@ -763,38 +842,49 @@
             lng: -117.885076
     };
 
-    var EducationBuilding = [PLSCoords, PLCoords, RGCCoords, UHCoords, LHCoords, MHCoords, DBHCoords, ECCoords, ECoords, HCoords, CCCoords, CSCoords, clayesPerformingArtsCenter, visualArts, kinesologyAndHealthScience, mihaylo];
+    var EducationBuilding = [PLSCoords, PLCoords, RGCCoords, UHCoords, LHCoords, MHCoords, DBHCoords, ECCoords, ECoords, HCoords, CCCoords, CSCoords, mihaylo, KHSCoords, CPCCoords];
     var parkingStructures = [EastSideP, lotE, NutwoodP, lotR, DDownnsP, lotA, lotG, ArboP, lotI, lotF, CPFSParkingLot, lotS, lotCEast, lotCWest, lotC, lotH, StateCollegeParkingStructure, lotASouth];
 
-    initMap();
+    //$('.ui.dropdown').dropdown('set selected', '');
+
     {% block saveLocation %}{% endblock %}
 
     if (navigator.geolocation) { // Call geolocation to get user's current position
         navigator.geolocation.getCurrentPosition(getCurrPos, errorCallback, {
-            enableHighAccuracy: true
+            enableHighAccuracy: true,
+            timeout: 5000,
+  			maximumAge: 0
         });
     }
 
     function getCurrPos(position) {
         curLoc = position.coords.latitude + "," + position.coords.longitude;
+ 		{% if not post %}
         document.getElementById('location').value = curLoc;
+ 		{% endif %}
         document.getElementById('userLocation').value = curLoc;
+        $('#CurrentLocation').attr('data-value', curLoc);
     }
 
     function errorCallback() {}
 
     function fillContent(bldid, bldname, desc, link, image) {
-    	return 	'<div id="bodyContent">'+ image +
-                '<p><b>'+ bldname + '</b>: '+ desc + '</p>' +
-                '<p><a href="' + link + '">Link to '+ bldname +'</a></p>' +
-                '</div>'+
-                '</div>';
+    	return 	image +
+              '<p><b>'+ bldname + '</b>: '+ desc + '</p>' +
+              '<button class="ui blue left floated button" onclick="window.open(' + "'" + link + "','_blank');" + '" type="button">Link</button>'
     }
 
-    function pickImage(bld, h, w){
+    function pickImage(bld, h, w) {
 			var image = '<img src="static/img/' + bld + '.jpg" height="' + h + '" width="' + w + '">';
 			return image;
     }
+
+    function infoToggle() {
+
+      $('.ui.card').transition('scale');
+    }
+
+    initMap();
 
     for (let i = 0; i < markerButtons.length; i++) {
         var button = markerButtons[i];
@@ -886,13 +976,12 @@
                 bldid = bldid.split("-");
                 var array = maindict[bldid[0]];
                 var image = pickImage(bldid[0], 200, 360);
-                contentString = '<div id="content">'+
-                				'<button class="ui green button" id="' + bldid[0] +
-                				'-direction" onclick="document.getElementById(this.id).click()">Direction</button>' +
-                				'<h1 id="firstHeading" class="firstHeading">'+ array[0] +'</h1>';
+                contentString = '<h1 id="firstHeading" class="firstHeading">'+ array[0] +'</h1>';
                 contentString += fillContent(bldid[0], array[0], array[1], array[2], image);
-
-                var infoBubble = new InfoBubble({
+                contentString += '<button class="ui right floated green button" id="' + bldid[0] +
+                                 '-direction" onclick="document.getElementById(this.id).click()">Direction</button>';
+/*
+                var infoBubble = new infoBubble({
                     content: contentString,
                     autopanMargin: 10,
                     maxWidth: 550,
@@ -905,13 +994,61 @@
                     //disableAutoPan: true,
                     closeSrc: 'https://static.wixstatic.com/media/34b396_c3723d3c68e941229e546a46a69311eb~mv2.png/v1/fit/w_750,h_750/34b396_c3723d3c68e941229e546a46a69311eb~mv2.png'
                 });
+*/
+			var infoWindow = null;
+			var closeDelayed = false;
+    		var closeDelayHandler = function() {
+	        $(infoWindow.getWrapper()).removeClass('active');
+	        setTimeout(function() {
+		            closeDelayed = true;
+		            infoWindow.close();
+		        }, 300);
+	    	};
+              var infoWindow = new SnazzyInfoWindow({
+                marker: markers[i],
+                content: contentString,
+                wrapperClass: 'custom-window',
+            		closeOnMapClick: false,
+    		        padding: '20px',
+    		        backgroundColor: 'rgba(255, 255, 255, 1)',
+    		        border: true,
+    		        borderRadius: '10px',
+    		        shadow: true,
+    		        fontSize: '15px',
+    		        callbacks: {
+		            open: function() {
+		                $(this.getWrapper()).addClass('open');
+		            },
+		            afterOpen: function() {
+		                var wrapper = $(this.getWrapper());
+		                wrapper.addClass('active');
+		                wrapper.find('.custom-close').on('click', closeDelayHandler);
+		            },
+		            beforeClose: function() {
+		                if (!closeDelayed) {
+		                    closeDelayHandler();
+		                    return false;
+		                }
+		                return true;
+		            },
+		            afterClose: function() {
+		                var wrapper = $(this.getWrapper());
+		                wrapper.find('.custom-close').off();
+		                wrapper.removeClass('open');
+		                closeDelayed = false;
+		            }
+		        }
+		    });
 
-                markers[i].addListener('click', function() {
-                  infoBubble.open(map, markers[i]);
-                });
-                // Till here Info-Window
-                markers[i].setTitle(array[0]);
-                markers[i].setAnimation(google.maps.Animation.DROP);
+
+
+              markers[i].addListener('click', function() {
+              //infoBubble.open(map, markers[i]);
+                infoWindow.open();
+              });
+              // Till here Info-Window
+              markers[i].setTitle(array[0]);
+              markers[i].setAnimation(google.maps.Animation.DROP);
             }
             else {
                 markers[i].setVisible(false);
@@ -954,21 +1091,22 @@
      geodesic: true,
      strokeColor: '#ffff00',
      strokeOpacity: .6,
-     strokeWeight: 5
+     strokeWeight: 10
    	});
 
-   	campusPath.setMap(map);
-
+    campusPath.setMap(map);
     educationBuildingPlygon.setMap(map);
     parkingPolygon.setMap(map);
 
-    var addListenersOnPolygon = function(polygon) {
-      google.maps.event.addListener(polygon, 'mouseover', function (event) {
-//        alert("polygon")
-      });
-    }
 
-   addListenersOnPolygon(educationBuildingPlygon);
+    // var addListenersOnPolygon = function(polygon) {
+    //   google.maps.event.addListener(polygon, 'click', function (event) {
+    //
+    //     alert("polygon");
+    //   });
+    // }
+    //
+    // addListenersOnPolygon(educationBuildingPlygon);
 
     function initMap() { // displays map on page, sets up variables for the directions service for use later
         var travellingMode = "WALKING";
@@ -983,7 +1121,6 @@
             styles: mapstyles
             };
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
         directionsDisplay.setMap(map);
 
         {% block maproute %} {% endblock %}

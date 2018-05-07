@@ -1,4 +1,14 @@
-var mapstyles = [{
+var mapstyles = [
+{
+    "featureType": "administrative",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+},
+        {
         "featureType": "landscape",
         "stylers": [{
                 "hue": "#FFA800"
@@ -92,6 +102,26 @@ var mapstyles = [{
             },
             {
                 "gamma": 1
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels",
+        "stylers": [
+            {
+            "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "stylers": [
+            {
+                "visibility": "off"
             }
         ]
     }

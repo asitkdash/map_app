@@ -354,7 +354,7 @@ var mihaylo = [
 		{lat: 33.878520, lng: -117.884033},
 		{lat: 33.878775, lng: -117.884035}
 ];
-var kinesologyAndHealthScience = [
+var KHSCoords = [
 		{lat: 33.882238, lng: -117.886283},
 		{lat: 33.882446, lng: -117.886365},
 		{lat: 33.882449, lng: -117.886362},
@@ -448,7 +448,7 @@ var visualArts = [
 		{lat: 33.880272, lng: -117.888057},
 		{lat: 33.880263, lng: -117.888613}
 ];
-var clayesPerformingArtsCenter = [
+var CPCCoords = [
 		{lat: 33.880085, lng: -117.887562},
 		{lat: 33.880140, lng: -117.887562},
 		{lat: 33.880139, lng: -117.887546},

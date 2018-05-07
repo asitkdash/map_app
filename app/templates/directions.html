@@ -1,13 +1,16 @@
 {% extends "campusmap.html" %}
 
 {% block display %}
-<div class="ui centered card raised overlay" id="infocard">
-	<div class="content">
-		<div class="header">{{ bld }}</div>
-		<div class="description"> You will be there in {{ tl }}.</div>
-		<div id="imageCard" class="image"></div>
-		<div id="contentCard"></div>
-	</div>
+<div id="infocard">
+  <div class="ui blue button" id="cardButton" onclick="infoToggle()">Show/Hide Info</div>
+  <div class="ui card" id="cardContent">
+  	<div class="content">
+  		<div class="header">{{ bld }}</div>
+  		<div class="description"> You will be there in {{ tl }}. </div>
+  		<div id="imageCard" class="image"></div>
+  		<div id="contentCard"></div>
+  	</div>
+  </div>
 </div>
 {% endblock %}
 
@@ -15,7 +18,9 @@
       let array = maindict["{{ bldId }}"];
       let image = pickImage("{{ bldId }}", 200, 250);
       document.getElementById("imageCard").innerHTML = image;
-      document.getElementById("contentCard").innerHTML = '<div id="content">' + fillContent('{{ bldId }}', array[0], array[1], array[2], "");
+      document.getElementById("contentCard").innerHTML = fillContent('{{ bldId }}', array[0], array[1], array[2], "");
+      //document.getElementById("contentCard").innerHTML +=  '<button class="ui right floated green button" id="' + '{{ bldId }}' +
+                                                            '-direction" onclick="document.getElementById(this.id).click()">Direction</button>';
 
       GeoMarker = new GeolocationMarker();
       GeoMarker.setCircleOptions({visible: false});
@@ -38,5 +43,6 @@
 {% block saveLocation %}
   $('#CurrentLocation').attr('data-value', '{{ userLoc }}');
   $('.ui.dropdown').dropdown('set selected', '{{ cur }}');
+  //alert(document.getElementById('location').value);
 {% endblock %}
 

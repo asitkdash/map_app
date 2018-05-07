@@ -3,8 +3,10 @@
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <title>Titan Map App</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/snazzy-info-window.min.css') }}">
+    
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -15,17 +17,18 @@
     <script src="{{ url_for('static', filename='scripts/mapstyles.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/markercolor.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/infobubble.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/snazzy-info-window.min.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <style>
         body {
             background-size: cover;
             background-size: 100%;
             background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(static/img/bg6.png);
-      			background-size: cover;
-      			background-repeat: no-repeat;
-      			background-color: black;
-      			background-position: center center;
-      			background-attachment: fixed;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-color: black;
+			background-position: center center;
+			background-attachment: fixed;
         }
     </style>
 </head>
@@ -43,6 +46,7 @@
 	</div>
 
 	{% block bar %}{% endblock %}
+  {% block infocard %}{% endblock %}
 
  	<div class="pusher">
       <div class="ui modal" id="loginmodal">

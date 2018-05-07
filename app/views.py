@@ -43,9 +43,9 @@ def mapdemo_post():
 			gmaps = GMaps(session['startLoc'], coords)
 			directions = gmaps.getDirections()
 			tl = gmaps.getTripLength()
-			userLoc = session['userLoc']
 			cur = session['startLoc']
-			return render_template('directions.html', userLoc=userLoc, bld=bld, bldId=bldId, coords=coords, cur=cur, directions=directions, tl=tl, key=key)
+			userLoc = session['userLoc']
+			return render_template('directions.html', post='true', userLoc=userLoc, bld=bld, bldId=bldId, coords=coords, cur=cur, directions=directions, tl=tl, key=key)
 
 @app.context_processor
 def coords_processor():
