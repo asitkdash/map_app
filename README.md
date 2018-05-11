@@ -1,7 +1,30 @@
 # map_app
-Titan maps is a web application that gives the user an easier method to get around the fullerton campus.
-#Function:
-The main function of Titan Maps is to provide the user direction to the designated building and an estimated time of arrival. The application uses Google Maps to find the direction. There is also a warning sign at time intervals from the 30 minute mark (i.e. 8:00, 8:30, 9:00, and so on).  Titan Maps assumes that the class will be starting at the 30 minute mark and resets until the time reaches the next half hour.
+Titan maps is an interactive campus map of Fullerton campus for general use targeting both students and guests.
 
-#Operating Environment
+# Function:
+The main function of Titan Maps is to provide the user direction to the designated building and an estimated time of arrival. The application uses Google Maps api to find the direction. 
+
+# Operating Environment
 Titan Maps runs on the web browser as a Web Application. The computer that is being used for the browser must be able to have locations found. The browser will ask the user to allow access to the user’s location, and the user must click on “Allow”.
+
+# Env
+Python
+Flask
+REST API
+Google Map Api
+HTML, CSS, Javascript, Semantic UI
+
+# Features
+- Overlay on map
+- Marker
+- Multiple Markers indicating the building on map
+- Live GPS
+- Nav bar with all building/service in CSUF campus
+- starting point selection button and search bar
+- Legend : abbreviation to use while searching on search bar
+
+# Future Work
+New framework like Django
+Voice Assistant feature
+Mobile App
+
