@@ -1,4 +1,4 @@
-# map_app
+# Titan Map : Interactive Campus Map
 Titan maps is an interactive campus map of Fullerton campus for general use targeting both students and guests.
 
 # Function:
@@ -23,6 +23,7 @@ Titan Maps runs on the web browser as a Web Application. The computer that is be
 - Nav bar with all building/service in CSUF campus
 - starting point selection button and search bar
 - Legend : abbreviation to use while searching on search bar
+- Infowindow with all building information
 
 # Future Work
 - New framework like Django
